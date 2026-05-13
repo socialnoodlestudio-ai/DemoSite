@@ -105,6 +105,16 @@ When sources disagree (GBP says one address, Facebook another), **do not pick on
 - No silently filling in hours/address/phone when sources disagree — flag and ask.
 - No relying on my training data for facts about the business.
 
-## 8. When you hit something this playbook doesn't cover
+## 8. Standard delivery workflow — every demo follows this flow
+
+1. **Research** — run §1–§7. Produce `NOTES.md` in the new demo folder.
+2. **Build locally** — new folder at the repo root named with the business slug (lowercase, hyphenated, e.g. `american-pressure-clean/`). Flat structure inside: `index.html`, `styles.css`, `script.js`, `NOTES.md`. **Always invoke the `frontend-design` skill before writing the HTML/CSS** — it's installed locally and exists to avoid generic "AI default" aesthetics (predictable navy-gradient heroes, rounded-corner cards, identical section flow). Skipping it produces competent but forgettable demos.
+3. **Local preview** — start `python -m http.server 8000` from the demo folder, bound to all interfaces so phones on the same Wi-Fi can reach it. Share both the `localhost:8000` URL and the LAN URL (`http://<local-ip>:8000`).
+4. **QR code** — generate a `qr-code.png` in the demo folder pointing to the LAN URL so the user can scan and check on their phone. Already gitignored per `.gitignore`.
+5. **Wait for explicit approval** — do not commit, do not push. Pause until the user says something like "looks good, push it." Mobile responsiveness is part of the approval — the user will test the QR-code preview on their phone.
+6. **Commit and push to `main`** — only after approval. Stage the demo folder by name (not `git add .`). Push to `origin main`. GitHub Pages will serve at `/<demo-folder>/`.
+7. **Landing page update** — do not auto-update the root `index.html` (the demos list). Ask the user if they want the new demo linked from the landing page.
+
+## 9. When you hit something this playbook doesn't cover
 
 Add an entry to [LESSONS.md](LESSONS.md) before finishing the session. If the same lesson comes up across multiple demos, promote it into this file and mark the original `[promoted]`.
