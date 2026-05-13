@@ -1,0 +1,17 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Local dev helpers — do not publish
+.claude/
+qr-code.png
+qr-code.svg
+
+# Internal research notes (per-demo) — keep local only
+**/NOTES.md
+**/_internal/

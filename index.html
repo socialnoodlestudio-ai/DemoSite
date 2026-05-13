@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Demo websites by Social Noodle Studio — concept builds for prospective clients.">
+<title>Demo Sites · Social Noodle Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF9F4;
+    --surface: #F4EFE6;
+    --text: #1A1A1A;
+    --text-soft: #5C5C5C;
+    --text-mute: #8A8A8A;
+    --border: #E7E1D4;
+    --accent: #E76F51;
+    --accent-warm: #E9C46A;
+    --accent-deep: #2A9D8F;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 48px);
+  }
+  header {
+    padding: clamp(36px, 6vw, 64px) 0 clamp(40px, 7vw, 80px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(40px, 7vw, 72px);
+  }
+  .brand svg { width: 40px; height: 40px; color: var(--accent); }
+  .brand-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+  .brand-name .dot { color: var(--accent); }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    position: relative;
+  }
+  h1 em::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0.08em;
+    height: 0.14em;
+    background: var(--accent-warm);
+    z-index: -1;
+    border-radius: 2px;
+  }
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-soft);
+    max-width: 620px;
+  }
+  .stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: var(--text-mute);
+  }
+  .stat strong {
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+
+  main {
+    padding: clamp(40px, 7vw, 80px) 0;
+  }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    color: var(--text-soft);
+    margin-bottom: clamp(32px, 5vw, 48px);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    color: inherit;
+    text-decoration: none;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(38, 70, 83, 0.12);
+    border-color: var(--accent);
+  }
+  .card-preview {
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  .card-body {
+    padding: 22px 24px 26px;
+  }
+  .card-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    margin-bottom: 10px;
+  }
+  .card-eyebrow .pip {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--accent);
+  }
+  .card-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
+  .card:hover .card-cta svg { transform: translateX(4px); }
+
+  /* Card preview styles */
+  .preview-pf {
+    background: radial-gradient(circle at 70% 30%, rgba(255,87,34,0.3), transparent 60%), #0A0A0B;
+    color: #FF5722;
+  }
+  .preview-pf .pf-mark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.04em;
+    font-style: italic;
+  }
+  .preview-pf .pf-tag {
+    position: absolute;
+    bottom: 16px;
+    left: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: rgba(255, 87, 34, 0.7);
+  }
+
+  .preview-noodle {
+    background:
+      radial-gradient(circle at 25% 30%, rgba(231,111,81,0.18), transparent 55%),
+      linear-gradient(135deg, #FBF9F4 0%, #F4EFE6 100%);
+    color: var(--accent);
+  }
+  .preview-noodle svg {
+    width: 70%;
+    height: 70%;
+    color: var(--accent);
+  }
+
+  .preview-devi {
+    background:
+      radial-gradient(circle at 70% 30%, rgba(201,162,39,0.25), transparent 55%),
+      linear-gradient(135deg, #7C1F2C 0%, #4A0E1A 100%);
+    color: #F4D5A7;
+  }
+  .preview-devi .devi-d {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 5rem;
+    line-height: 1;
+    color: #F4D5A7;
+  }
+  .preview-devi .devi-tag {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(244, 213, 167, 0.7);
+  }
+
+  footer {
+    padding: 40px 0 56px;
+    border-top: 1px solid var(--border);
+    color: var(--text-mute);
+    font-size: 0.88rem;
+    text-align: center;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M6 24 Q12 8, 24 16 T42 24 Q36 40, 24 32 T6 24 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+        </svg>
+        <span class="brand-name">Social Noodle<span class="dot">.</span></span>
+      </div>
+      <h1>Demo sites <em>built for real businesses</em>.</h1>
+      <p class="subtitle">Concept builds, custom-designed for each prospective client. Pick a demo to see it live.</p>
+      <div class="stats">
+        <div class="stat"><strong>3</strong> demos live</div>
+        <div class="stat"><strong>100%</strong> hand-built, no templates</div>
+        <div class="stat"><strong>0</strong> AI stock filler</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="section-label">The Demos</div>
+      <h2 class="section-title">Current builds in rotation.</h2>
+      <p class="section-sub">Each link is the live preview a client gets when we send them the pitch.</p>
+
+      <div class="grid">
+
+        <a href="./PF-Auto-Style/" class="card">
+          <div class="card-preview preview-pf">
+            <div class="pf-mark">PF</div>
+            <div class="pf-tag">WRAPS · TINT · PPF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow"><span class="pip"></span>Auto Customization · West Palm Beach</div>
+            <h3 class="card-title">PF Auto Style</h3>
+            <p class="card-desc">Vehicle wraps, window tinting, PPF, and chrome delete. Owner-operated by Dago.</p>
+            <span class="card-cta">View demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="./devise-exclusive-fashion-website/" class="card">
+          <div class="card-preview preview-devi">
+            <div class="devi-d">D</div>
+            <div class="devi-tag">EXCLUSIVE FASHION</div>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow"><span class="pip"></span>Luxury Fashion · Port St. Lucie</div>
+            <h3 class="card-title">Devi's Exclusive Fashion</h3>
+            <p class="card-desc">Luxury Indian wear, bridal couture, and fine jewelry. Boutique e-commerce.</p>
+            <span class="card-cta">View demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="./social-noodle-studio-website/" class="card">
+          <div class="card-preview preview-noodle">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M10 50 Q22 18, 50 32 T90 50 Q78 82, 50 68 T10 50 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="50" cy="50" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-eyebrow"><span class="pip"></span>Agency Site · Royal Palm Beach</div>
+            <h3 class="card-title">Social Noodle Studio</h3>
+            <p class="card-desc">Web design and local SEO for Florida small businesses. The agency's own site.</p>
+            <span class="card-cta">View demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Social Noodle Studio · Demos hosted via <a href="https://pages.github.com">GitHub Pages</a></span>
+    </div>
+  </footer>
+</body>
+</html>

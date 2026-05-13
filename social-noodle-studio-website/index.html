@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Social Noodle Studio — Custom web design and local SEO for Florida small businesses. Clean, professional sites that bring you real leads.">
+<title>Social Noodle Studio — Web Design for Florida Small Businesses</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Social Noodle Studio home">
+      <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M6 24 Q12 8, 24 16 T42 24 Q36 40, 24 32 T6 24 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">Social Noodle<span class="logo-dot">.</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn-primary">Get Started</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="noodle noodle-1" viewBox="0 0 600 200" preserveAspectRatio="none">
+      <path d="M0 100 Q150 0, 300 100 T600 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 12"/>
+    </svg>
+    <svg class="noodle noodle-2" viewBox="0 0 600 200" preserveAspectRatio="none">
+      <path d="M0 100 Q200 200, 400 60 T600 120" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">
+        <span class="pulse-dot"></span>
+        Booking projects for Summer 2026
+      </div>
+      <h1 class="hero-title">
+        No website? Let's build one that brings you <em>real leads</em>.
+      </h1>
+      <p class="hero-sub">
+        We help small businesses across Florida launch clean, professional websites that make it easier for customers to find you, trust you, and reach out.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          Free Custom Preview
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost btn-lg">See How It Works</a>
+      </div>
+      <div class="hero-trust">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <span>Trusted by 30+ Florida small businesses</span>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="device">
+        <div class="device-bar">
+          <span></span><span></span><span></span>
+          <div class="device-url">socialnoodlestudio.com</div>
+        </div>
+        <div class="device-screen">
+          <div class="mockup-hero">
+            <div class="mockup-pill"></div>
+            <div class="mockup-title"></div>
+            <div class="mockup-title short"></div>
+            <div class="mockup-row">
+              <div class="mockup-btn"></div>
+              <div class="mockup-btn ghost"></div>
+            </div>
+          </div>
+          <div class="mockup-cards">
+            <div class="mockup-card"><div></div><div></div></div>
+            <div class="mockup-card"><div></div><div></div></div>
+            <div class="mockup-card"><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-badge badge-leads">
+        <strong>+247%</strong>
+        <span>more leads</span>
+      </div>
+      <div class="float-badge badge-rating">
+        <strong>4.9 ★</strong>
+        <span>client rating</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOGOS / MARQUEE ===== -->
+<section class="marquee" aria-label="Industries we serve">
+  <div class="marquee-track">
+    <span>Fashion Boutiques</span><span>•</span>
+    <span>Home Bakers</span><span>•</span>
+    <span>Cleaning Companies</span><span>•</span>
+    <span>Health & Wellness</span><span>•</span>
+    <span>Real Estate</span><span>•</span>
+    <span>Restaurants</span><span>•</span>
+    <span>Contractors</span><span>•</span>
+    <span>Salons & Spas</span><span>•</span>
+    <span>Fashion Boutiques</span><span>•</span>
+    <span>Home Bakers</span><span>•</span>
+    <span>Cleaning Companies</span><span>•</span>
+    <span>Health & Wellness</span><span>•</span>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Your trusted web design partner for Palm Beach small businesses.</h2>
+      <p class="lead">
+        Most agencies talk in features. We talk in outcomes. A website should do one thing well: turn the people who land on it into the people who call you, book you, or buy from you.
+      </p>
+      <p>
+        Based in Royal Palm Beach, we work hands-on with owners across Florida to build sites that are fast, easy to update, and structured so visitors instantly understand what you do and how to reach you.
+      </p>
+      <div class="stats">
+        <div class="stat"><strong>30+</strong><span>sites launched</span></div>
+        <div class="stat"><strong>5★</strong><span>avg client rating</span></div>
+        <div class="stat"><strong>14 days</strong><span>avg turnaround</span></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 400 400" class="about-illo" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="var(--accent)"/>
+            <stop offset="1" stop-color="var(--accent-2)"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="160" fill="url(#g1)" opacity="0.15"/>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="url(#g1)" stroke-width="2" stroke-dasharray="4 8"/>
+        <path d="M80 200 Q140 80, 200 200 T320 200" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M80 240 Q140 120, 200 240 T320 240" fill="none" stroke="var(--accent-2)" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="80" cy="200" r="8" fill="var(--accent)"/>
+        <circle cx="320" cy="200" r="8" fill="var(--accent)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Everything your business needs to show up online.</h2>
+      <p class="section-sub">From a brand-new site to ongoing care and search visibility — three focused services, no fluff.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="8" width="36" height="26" rx="3"/>
+            <path d="M6 16h36M12 22h10M12 26h6"/>
+            <path d="M18 40h12M24 34v6"/>
+          </svg>
+        </div>
+        <h3>Web Design</h3>
+        <p>Clean, modern websites built around your actual customer — not a template gallery. Mobile-first, fast, and easy to update.</p>
+        <ul class="service-list">
+          <li>Custom design from scratch</li>
+          <li>SEO-friendly copywriting</li>
+          <li>Online booking setup</li>
+        </ul>
+        <a href="#contact" class="service-link">Start a project →</a>
+      </article>
+
+      <article class="service-card featured">
+        <div class="featured-tag">Most Popular</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="22" cy="22" r="12"/>
+            <path d="M31 31l9 9"/>
+            <path d="M22 16v6l4 3"/>
+          </svg>
+        </div>
+        <h3>Local SEO</h3>
+        <p>Help your business show up on Google when people in your area are searching for what you offer — not buried on page four.</p>
+        <ul class="service-list">
+          <li>Google Business Profile</li>
+          <li>Local keyword targeting</li>
+          <li>Monthly ranking reports</li>
+        </ul>
+        <a href="#contact" class="service-link">Start a project →</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M11 37l4-4M33 15l4-4"/>
+            <circle cx="24" cy="24" r="6"/>
+          </svg>
+        </div>
+        <h3>Maintenance</h3>
+        <p>Ongoing updates, fixes, security, and support so your site stays fast, safe, and current — without you thinking about it.</p>
+        <ul class="service-list">
+          <li>Weekly backups</li>
+          <li>Plugin & content updates</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="#contact" class="service-link">Start a project →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Recent Work</div>
+      <h2 class="section-title">A few sites we've shipped.</h2>
+      <p class="section-sub">Every project starts with a free preview so you see direction before you commit.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <a class="port-card" href="#contact" style="--c1:#F4A261;--c2:#E76F51;">
+        <div class="port-mock">
+          <div class="pm-nav"><span></span><span></span><span></span></div>
+          <div class="pm-hero">
+            <div class="pm-headline"></div>
+            <div class="pm-headline short"></div>
+            <div class="pm-btn"></div>
+          </div>
+          <div class="pm-grid"><div></div><div></div><div></div></div>
+        </div>
+        <div class="port-info">
+          <h4>Coastal Threads Boutique</h4>
+          <span>Fashion · E-commerce</span>
+        </div>
+      </a>
+
+      <a class="port-card" href="#contact" style="--c1:#E9C46A;--c2:#F4A261;">
+        <div class="port-mock light">
+          <div class="pm-nav"><span></span><span></span><span></span></div>
+          <div class="pm-hero">
+            <div class="pm-headline"></div>
+            <div class="pm-headline short"></div>
+            <div class="pm-btn"></div>
+          </div>
+          <div class="pm-grid"><div></div><div></div><div></div></div>
+        </div>
+        <div class="port-info">
+          <h4>Sweet Crumb Bakery</h4>
+          <span>Home Baker · Local</span>
+        </div>
+      </a>
+
+      <a class="port-card" href="#contact" style="--c1:#2A9D8F;--c2:#264653;">
+        <div class="port-mock">
+          <div class="pm-nav"><span></span><span></span><span></span></div>
+          <div class="pm-hero">
+            <div class="pm-headline"></div>
+            <div class="pm-headline short"></div>
+            <div class="pm-btn"></div>
+          </div>
+          <div class="pm-grid"><div></div><div></div><div></div></div>
+        </div>
+        <div class="port-info">
+          <h4>SparkleCo Cleaning</h4>
+          <span>Services · Booking</span>
+        </div>
+      </a>
+
+      <a class="port-card" href="#contact" style="--c1:#90BE6D;--c2:#43AA8B;">
+        <div class="port-mock light">
+          <div class="pm-nav"><span></span><span></span><span></span></div>
+          <div class="pm-hero">
+            <div class="pm-headline"></div>
+            <div class="pm-headline short"></div>
+            <div class="pm-btn"></div>
+          </div>
+          <div class="pm-grid"><div></div><div></div><div></div></div>
+        </div>
+        <div class="port-info">
+          <h4>Palm Wellness Co.</h4>
+          <span>Health & Wellness</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS (improvement) ===== -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Four steps, no surprises.</h2>
+    </div>
+
+    <ol class="process-steps">
+      <li>
+        <div class="step-num">01</div>
+        <h4>Free Preview</h4>
+        <p>Tell us about your business. We send back a homepage preview so you can see direction before paying a dollar.</p>
+      </li>
+      <li>
+        <div class="step-num">02</div>
+        <h4>Design</h4>
+        <p>We design the full site around your customer's journey — what they need to see, in the order they need to see it.</p>
+      </li>
+      <li>
+        <div class="step-num">03</div>
+        <h4>Build & Launch</h4>
+        <p>We build it fast, hook up booking or contact forms, and walk you through everything before it goes live.</p>
+      </li>
+      <li>
+        <div class="step-num">04</div>
+        <h4>Grow</h4>
+        <p>Optional local SEO and maintenance keep your site climbing in search and running smoothly long-term.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS (improvement) ===== -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Kind Words</div>
+      <h2 class="section-title">What clients say.</h2>
+    </div>
+
+    <div class="testi-grid">
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>The free preview sold me. I could literally see what my business would look like online before I committed. Two weeks later we were live and getting calls.</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#F4A261,#E76F51)">M</div>
+          <div><strong>Maria L.</strong><span>Owner, Coastal Threads</span></div>
+        </figcaption>
+      </figure>
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>Calls and bookings doubled in the first month. The site finally explains what we do in a way that makes sense to actual customers.</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#2A9D8F,#264653)">J</div>
+          <div><strong>James R.</strong><span>SparkleCo Cleaning</span></div>
+        </figcaption>
+      </figure>
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>I'm not technical at all. They handled everything and explained it in plain English. I can update my own menu now — that's huge.</blockquote>
+        <figcaption>
+          <div class="avatar" style="background:linear-gradient(135deg,#E9C46A,#F4A261)">A</div>
+          <div><strong>Ana T.</strong><span>Sweet Crumb Bakery</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FREE PREVIEW CTA ===== -->
+<section class="preview-cta">
+  <div class="container preview-inner">
+    <div class="preview-text">
+      <h2>Get a free preview of your future website.</h2>
+      <p>Tell us a little about your business and we'll build a simple homepage preview based on what you do — so you can see your services, photos, and contact info organized into a clean, professional site. No pressure, no commitment. Just a clear idea of what's possible.</p>
+      <a href="#contact" class="btn btn-primary btn-lg">
+        Claim My Free Preview
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="preview-visual" aria-hidden="true">
+      <div class="prev-card prev-1"></div>
+      <div class="prev-card prev-2"></div>
+      <div class="prev-card prev-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ (improvement) ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Questions, answered.</h2>
+    </div>
+
+    <div class="faq-list">
+      <details>
+        <summary>How much does a website cost?<span class="chev">+</span></summary>
+        <p>Most small business sites land between $1,200 and $3,500 depending on page count, features (like online booking), and copywriting needs. We always quote a flat price up front — no hourly surprises.</p>
+      </details>
+      <details>
+        <summary>How long does it take?<span class="chev">+</span></summary>
+        <p>Average turnaround is 14 days from approval. Simple sites can be live in a week; larger projects with custom photography or e-commerce take a bit longer.</p>
+      </details>
+      <details>
+        <summary>Do you really do a free preview?<span class="chev">+</span></summary>
+        <p>Yes. You give us a few details about your business and we send back a real homepage preview within a few days. If you love it, we keep going. If not, you walk away with zero owed and zero hard feelings.</p>
+      </details>
+      <details>
+        <summary>Can I update the site myself after launch?<span class="chev">+</span></summary>
+        <p>Absolutely. We build on platforms that are simple to update, and we include a short training session so you can change text, photos, and prices without calling us.</p>
+      </details>
+      <details>
+        <summary>Do you only work with Florida businesses?<span class="chev">+</span></summary>
+        <p>Most of our clients are in Palm Beach and across Florida, but we work with small businesses anywhere in the US.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-text">
+      <div class="section-label">Let's Talk</div>
+      <h2 class="section-title">Ready when you are.</h2>
+      <p>Send a note and we'll get back within one business day. Or grab your free preview — whichever feels easier.</p>
+
+      <ul class="contact-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:5613207248">(561) 320-7248</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          <a href="mailto:hello@socialnoodlestudio.com">hello@socialnoodlestudio.com</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Royal Palm Beach, FL</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-success').hidden=false; this.reset();">
+      <div class="form-row">
+        <label>
+          <span>Your name</span>
+          <input type="text" required placeholder="Jane Smith">
+        </label>
+        <label>
+          <span>Business name</span>
+          <input type="text" placeholder="Smith & Co.">
+        </label>
+      </div>
+      <label>
+        <span>Email</span>
+        <input type="email" required placeholder="you@business.com">
+      </label>
+      <label>
+        <span>What do you need?</span>
+        <select>
+          <option>New website</option>
+          <option>Website redesign</option>
+          <option>Local SEO</option>
+          <option>Maintenance</option>
+          <option>Not sure yet</option>
+        </select>
+      </label>
+      <label>
+        <span>Tell us a little about your business</span>
+        <textarea rows="4" placeholder="What you do, who you serve, what's missing today..."></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
+      <p class="form-success" hidden>Thanks! We'll be in touch within one business day.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="#top" class="logo">
+        <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M6 24 Q12 8, 24 16 T42 24 Q36 40, 24 32 T6 24 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Social Noodle<span class="logo-dot">.</span></span>
+      </a>
+      <p class="footer-tag">Clean, professional websites for Florida small businesses.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Web Design</a></li>
+        <li><a href="#services">Local SEO</a></li>
+        <li><a href="#services">Maintenance</a></li>
+        <li><a href="#contact">Free Preview</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Get in touch</h5>
+      <ul class="contact-mini">
+        <li><a href="tel:5613207248">(561) 320-7248</a></li>
+        <li><a href="mailto:hello@socialnoodlestudio.com">hello@socialnoodlestudio.com</a></li>
+        <li>Royal Palm Beach, FL</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Social Noodle Studio. All rights reserved.</span>
+    <span>Made with care in Florida 🌴</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
