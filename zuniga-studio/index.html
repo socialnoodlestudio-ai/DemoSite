@@ -13,12 +13,31 @@
 
 <link rel="stylesheet" href="assets/zuniga.css" />
 <script src="assets/zuniga.js" defer></script>
+
+<!-- Three.js importmap (resolves the bare `three` specifier used by examples/jsm) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 
 <body class="home">
 
 <!-- Cursor aura -->
 <div class="aura" aria-hidden="true"></div>
+
+<!-- Side scroll progress (fixed) -->
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress__track">
+    <div class="scroll-progress__fill" id="scrollFill"></div>
+    <div class="scroll-progress__dot" id="scrollDot"></div>
+    <div class="scroll-progress__readout" id="scrollReadout">00%</div>
+  </div>
+</div>
 
 <!-- 12-col background grid -->
 <div class="grid-canvas" aria-hidden="true">
@@ -50,9 +69,19 @@
 
   <!-- ============== SECTION 01 — HERO ============== -->
   <section class="hero" id="hero">
-    <div class="hero__asset" aria-hidden="true">
-      <img src="assets/zs-monogram.png" alt="" class="hero__monogram" data-parallax="28" />
+
+    <!-- Atmospheric layer — stage feel, not a void -->
+    <div class="hero__atmosphere" aria-hidden="true">
       <div class="hero__wash"></div>
+      <div class="hero__floor"></div>
+    </div>
+
+    <!-- Centerstage asset -->
+    <div class="hero__asset" aria-hidden="true">
+      <!-- Three.js mounts here. PNG below is the fallback / pre-load state. -->
+      <div class="hero__monogram-3d" id="monogram3d" role="button" tabindex="0"
+           aria-label="Spin the Zuniga monogram"></div>
+      <img src="assets/zs-monogram.png" alt="" class="hero__monogram" data-parallax="28" />
     </div>
 
     <div class="hero__inner page-width">
@@ -62,18 +91,24 @@
         <span class="mono-label">A Studio for the Quietly Ambitious</span>
       </div>
 
-      <h1 class="hero__headline display reveal-up delay-1">
+      <!-- Service descriptor — what we actually do, in plain English -->
+      <p class="hero__service-line reveal-up delay-1">
+        <span class="hero__service-text">Web design · Brand · Local SEO</span>
+        <span class="hero__service-meta">— for Florida small businesses</span>
+      </p>
+
+      <h1 class="hero__headline display reveal-up delay-2">
         Digital experiences that <em>transform</em> attention into action.
       </h1>
 
-      <div class="hero__sub reveal-up delay-2">
+      <div class="hero__sub reveal-up delay-3">
         <p>
           Motion-first websites and immersive digital experiences designed to help
           ambitious businesses stand apart, build trust, and convert attention into growth.
         </p>
       </div>
 
-      <div class="hero__ctas reveal-up delay-3">
+      <div class="hero__ctas reveal-up delay-4">
         <a class="btn-primary" href="contact/">Start a Project</a>
         <a class="btn-secondary" href="work/">View Selected Work <span class="arrow">→</span></a>
       </div>
@@ -88,10 +123,16 @@
         <span>EST. 2026 · FLORIDA</span>
       </div>
       <div class="mono-data" style="display: flex; gap: 10px; align-items: center;">
-        <span>scroll</span>
+        <span>Click the monogram</span>
+        <span class="text-rose">·</span>
+        <span>Scroll</span>
         <span class="text-rose">↓</span>
       </div>
     </div>
+
+    <!-- Toast container for click feedback -->
+    <div class="monogram-toast" id="monogramToast" role="status" aria-live="polite"></div>
+
   </section>
 
   <!-- ============== SECTION 02 — IDENTITY STRIP (marquee) ============== -->
@@ -121,36 +162,77 @@
     </div>
   </section>
 
-  <!-- ============== SECTION 03 — MANIFESTO ============== -->
-  <section class="section manifesto" id="manifesto">
+  <!-- ============== SECTION 03 — MANIFESTO (numbered, asymmetric) ============== -->
+  <section class="section manifesto manifesto--editorial" id="manifesto">
     <div class="page-width">
-      <div class="manifesto__inner">
-        <div class="section-eyebrow reveal-up">
-          <span class="mono-eyebrow">[ 02 / Manifesto ]</span>
-          <span class="mono-meta">A small studio that ships like a serious one</span>
-        </div>
-        <h2 class="manifesto__pull display reveal-up delay-1">
-          Small businesses deserve a serious <em>studio</em>.
-        </h2>
-        <div class="manifesto__body reveal-up delay-2">
-          <p>
-            Most of the web in 2026 is templated. Fast to ship, identical
-            to the next one over. Beautiful in screenshots and forgotten
-            by Friday.
-          </p>
-          <p>
-            We do the opposite. Every Zuniga site is hand-built — strategy,
-            brand, code, motion — to the same restraint, the same intention
-            a luxury studio would apply to a Fortune 500. The difference
-            is who we apply it to: ambitious Florida small businesses
-            that have outgrown templates.
-          </p>
-          <p>
-            We work with three clients at a time. We answer email ourselves.
-            And we ship sites you can show off without apologizing.
-          </p>
-        </div>
+      <div class="section-eyebrow reveal-up">
+        <span class="mono-eyebrow">[ 02 / Manifesto ]</span>
+        <span class="mono-meta">Four commitments · One studio</span>
       </div>
+
+      <ol class="manifesto__list">
+
+        <li class="manifesto__statement manifesto__statement--left reveal-up">
+          <span class="manifesto__num display">01</span>
+          <div class="manifesto__body">
+            <h3 class="manifesto__head display">
+              Small businesses deserve<br />
+              a serious <em>studio</em>.
+            </h3>
+            <p class="manifesto__caption">
+              Not a freelancer, not a Wix template, not an agency that
+              forgets your name three months in. A studio that treats
+              your work the way a luxury consultancy treats a Fortune 500.
+            </p>
+          </div>
+        </li>
+
+        <li class="manifesto__statement manifesto__statement--right reveal-up delay-1">
+          <span class="manifesto__num display">02</span>
+          <div class="manifesto__body">
+            <h3 class="manifesto__head display">
+              Three clients at a time.<br />
+              <em>That's it.</em>
+            </h3>
+            <p class="manifesto__caption">
+              When we're full, we're full. The waitlist is real, the
+              schedule is honest, and you'll know exactly when we can
+              start before you sign anything.
+            </p>
+          </div>
+        </li>
+
+        <li class="manifesto__statement manifesto__statement--left reveal-up delay-2">
+          <span class="manifesto__num display">03</span>
+          <div class="manifesto__body">
+            <h3 class="manifesto__head display">
+              Hand-coded.<br />
+              <em>Every line.</em>
+            </h3>
+            <p class="manifesto__caption">
+              No page builders. No drag-and-drop scaffolding under
+              the hood. Sites that load in under a second and ship without
+              a single dependency you can't read.
+            </p>
+          </div>
+        </li>
+
+        <li class="manifesto__statement manifesto__statement--right reveal-up delay-3">
+          <span class="manifesto__num display">04</span>
+          <div class="manifesto__body">
+            <h3 class="manifesto__head display">
+              Florida.<br />
+              <em>Always answer.</em>
+            </h3>
+            <p class="manifesto__caption">
+              The studio is in Greenacres. Calls inside 24 hours. We
+              meet your customers' weather, your local search terms,
+              and the rhythm of running a real shop in this state.
+            </p>
+          </div>
+        </li>
+
+      </ol>
     </div>
   </section>
 
@@ -278,57 +360,99 @@
   </section>
 
   <!-- ============== SECTION 06 — FLORIDA COVERAGE ============== -->
-  <section class="section florida">
+  <section class="section florida florida--cinematic">
     <div class="page-width">
       <div class="section-eyebrow reveal-up">
         <span class="mono-eyebrow">[ 05 / Coverage ]</span>
         <span class="mono-meta">Florida-based · Statewide engagements</span>
       </div>
 
-      <div class="florida__inner reveal-up delay-1">
+      <!-- Cinematic full-bleed map with overlay text -->
+      <div class="florida__stage reveal-up delay-1">
+
+        <!-- Side caption (right) -->
+        <aside class="florida__caption">
+          <p class="florida__cap-eyebrow mono-eyebrow">From this studio</p>
+          <p class="florida__cap-pull display">
+            <em>Greenacres,</em> Florida.<br />
+            One studio. Statewide reach.
+          </p>
+          <p class="florida__cap-lead">
+            We work statewide — though most of our clients are
+            concentrated in the Treasure Coast, Palm Beach County,
+            and the broader South Florida corridor.
+          </p>
+        </aside>
+
+        <!-- The map itself — now the dominant visual element -->
         <div class="florida__map" aria-hidden="true">
-          <svg viewBox="0 0 320 460" xmlns="http://www.w3.org/2000/svg">
-            <!-- Simplified Florida outline -->
+          <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="fl-glow" cx="50%" cy="60%" r="60%">
+                <stop offset="0%"  stop-color="#E2B4B4" stop-opacity="0.10"/>
+                <stop offset="70%" stop-color="#E2B4B4" stop-opacity="0.02"/>
+                <stop offset="100%" stop-color="#E2B4B4" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="fl-dot-glow">
+                <feGaussianBlur stdDeviation="1.4"/>
+              </filter>
+            </defs>
+
+            <!-- Faint glow behind the peninsula -->
+            <rect width="400" height="480" fill="url(#fl-glow)" />
+
+            <!-- Real Florida outline — sourced from USGS via glynnbird/usstatesgeojson,
+                 projected to 400x480 viewBox, simplified to 112 points. -->
             <path
-              d="M30 40 L120 38 L200 42 L260 50 L290 70 L295 110 L280 150 L260 195 L260 235 L255 265 L260 290 L245 320 L230 360 L210 395 L185 425 L160 445 L140 445 L120 430 L105 405 L95 380 L85 350 L80 320 L80 290 L70 270 L55 250 L42 220 L35 180 L25 145 L20 105 L25 65 Z"
-              fill="none"
-              stroke="rgba(247,245,240,0.20)"
+              d="M224.8 101.9 L253.7 103.8 L267.0 104.7 L278.7 116.6 L285.7 93.9 L304.6 96.4 L313.3 109.2 L320.5 140.5 L329.3 166.6 L347.7 202.4 L352.3 209.2 L352.9 223.7 L364.8 262.4 L370.7 279.5 L379.3 304.4 L378.1 332.5 L376.2 347.7 L374.2 367.5 L370.1 365.3 L366.6 375.2 L367.0 383.5 L359.3 391.7 L357.7 393.3 L355.8 392.3 L352.6 394.4 L350.8 395.1 L347.6 396.6 L342.9 395.3 L341.4 394.7 L338.9 395.5 L338.1 396.6 L336.1 396.9 L335.2 397.1 L331.8 397.3 L327.2 393.8 L326.1 390.8 L328.4 386.0 L324.3 377.1 L321.0 368.5 L318.0 362.0 L312.4 357.5 L306.5 356.5 L300.2 355.8 L295.6 341.2 L288.8 326.2 L283.6 323.0 L279.6 312.7 L283.9 309.0 L283.6 300.7 L278.5 301.3 L275.3 309.0 L267.8 297.7 L259.8 280.8 L251.6 268.4 L256.0 268.8 L260.5 262.2 L266.3 255.7 L265.0 248.0 L264.3 252.8 L261.6 248.4 L252.7 246.6 L260.0 250.8 L255.9 259.3 L254.7 259.0 L252.1 264.0 L249.4 254.4 L247.1 248.1 L249.5 235.4 L252.0 227.1 L255.3 217.2 L255.4 210.7 L256.2 202.1 L254.2 194.6 L249.7 186.1 L244.8 180.9 L236.9 182.5 L233.5 174.6 L229.9 169.5 L222.9 163.3 L219.9 153.8 L213.5 150.3 L209.2 142.0 L194.0 132.4 L186.2 131.0 L180.0 130.3 L174.8 134.6 L174.2 141.6 L163.1 143.0 L151.0 149.7 L147.3 149.6 L134.0 152.3 L125.0 145.1 L128.4 152.8 L129.0 144.2 L119.1 136.1 L106.3 126.3 L77.1 115.4 L54.3 115.9 L28.8 119.2 L31.3 100.8 L21.7 82.4 L28.5 82.3 L36.4 82.3 L47.5 82.3 L63.1 82.4 L79.0 82.6 L94.7 82.6 L142.3 82.2 L151.2 97.7 L190.2 99.8 L210.5 101.0 L224.8 101.9 Z"
+              fill="rgba(226, 180, 180, 0.04)"
+              stroke="rgba(247, 245, 240, 0.32)"
               stroke-width="1"
+              stroke-linejoin="round"
             />
-            <!-- City dots -->
+
+            <!-- City dots (lat/lon-projected, real positions) -->
             <g class="florida__cities">
-              <circle cx="225" cy="115" r="4" data-city="Jacksonville" />
-              <circle cx="225" cy="180" r="4" data-city="Orlando" />
-              <circle cx="170" cy="265" r="4" data-city="Tampa" />
-              <circle cx="160" cy="320" r="4" data-city="Sarasota" />
-              <circle cx="245" cy="350" r="4" data-city="West Palm Beach" />
-              <circle cx="245" cy="385" r="6" data-city="Greenacres (HQ)" />
-              <circle cx="225" cy="410" r="4" data-city="Fort Lauderdale" />
-              <circle cx="200" cy="435" r="4" data-city="Miami" />
+              <circle cx="302.9" cy="118.2" r="3.5" data-city="Jacksonville" />
+              <circle cx="316.1" cy="214.2" r="3.5" data-city="Orlando" />
+              <circle cx="265.0" cy="245.9" r="3.5" data-city="Tampa" />
+              <circle cx="261.7" cy="278.6" r="3.5" data-city="Sarasota" />
+              <circle cx="374.9" cy="344.1" r="3.5" data-city="Fort Lauderdale" />
+              <circle cx="372.5" cy="362.9" r="3.5" data-city="Miami" />
+              <!-- Studio HQ — Greenacres, accented + slightly larger -->
+              <circle cx="375.3" cy="317.3" r="6" class="florida__hq" data-city="Greenacres · HQ" />
+              <circle cx="375.3" cy="317.3" r="14" class="florida__hq-ring" />
+            </g>
+
+            <!-- HQ label callout — small mono caption next to Greenacres -->
+            <g class="florida__hq-label" transform="translate(310, 310)">
+              <line x1="58" y1="7" x2="62" y2="7" stroke="#E2B4B4" stroke-width="0.6" opacity="0.7" />
+              <text x="56" y="10" text-anchor="end"
+                    font-family="Space Mono" font-size="7.5"
+                    fill="#E2B4B4" letter-spacing="0.18em">STUDIO · GREENACRES</text>
             </g>
           </svg>
         </div>
 
-        <div class="florida__cities-text">
-          <p class="florida__lead">
-            We work statewide — though most of our clients are concentrated
-            in the Treasure Coast, Palm Beach County, and the broader South Florida corridor.
-          </p>
-          <ul class="florida__list">
-            <li>Greenacres <span class="text-rose">· Studio</span></li>
-            <li>West Palm Beach</li>
-            <li>Boca Raton</li>
-            <li>Fort Lauderdale</li>
-            <li>Miami</li>
-            <li>Sarasota</li>
-            <li>Tampa</li>
-            <li>Orlando</li>
-            <li>Jacksonville</li>
-          </ul>
-          <p class="florida__remote mono-meta">
-            Not in Florida? Selective remote engagements considered.
-          </p>
-        </div>
+      </div>
+
+      <!-- Cities rail + remote line below the cinematic stage -->
+      <div class="florida__cities-rail reveal-up delay-2">
+        <span class="florida__cities-label mono-eyebrow">Serving</span>
+        <ul class="florida__list">
+          <li><strong class="text-rose">Greenacres</strong> <span class="florida__list-tag">· Studio</span></li>
+          <li>West Palm Beach</li>
+          <li>Boca Raton</li>
+          <li>Fort Lauderdale</li>
+          <li>Miami</li>
+          <li>Sarasota</li>
+          <li>Tampa</li>
+          <li>Orlando</li>
+          <li>Jacksonville</li>
+        </ul>
+        <p class="florida__remote mono-meta">
+          Not in Florida? Selective remote engagements considered.
+        </p>
       </div>
     </div>
   </section>
@@ -530,7 +654,35 @@
   min-height: calc(100vh - 86px);
   padding-top: 86px;
   overflow: hidden;
+  background: linear-gradient(to bottom, var(--ink) 0%, var(--ink-soft) 100%);
 }
+
+/* Atmosphere — radial wash + floor reflection so the dark feels like a stage */
+.hero__atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(226,180,180,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 40% at 50% 60%, rgba(226,180,180,0.06) 0%, transparent 70%);
+}
+.hero__floor {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  width: 56%;
+  height: 28px;
+  background: radial-gradient(ellipse at center, rgba(226,180,180,0.22) 0%, rgba(226,180,180,0.04) 50%, transparent 75%);
+  filter: blur(18px);
+}
+
+/* Asset stage */
 .hero__asset {
   position: absolute;
   inset: 0;
@@ -539,6 +691,33 @@
   pointer-events: none;
   z-index: 2;
 }
+
+/* Three.js mount */
+.hero__monogram-3d {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 800ms var(--ease-out);
+  z-index: 3;
+}
+.hero__monogram-3d.is-ready { opacity: 1; }
+.hero__monogram-3d canvas {
+  width: clamp(420px, 56vw, 880px) !important;
+  height: clamp(420px, 56vw, 880px) !important;
+  max-width: 90vw !important;
+  max-height: 76vh !important;
+  cursor: pointer;
+}
+.hero__monogram-3d:focus-visible {
+  outline: 1px solid var(--rose);
+  outline-offset: 12px;
+}
+
+/* PNG fallback */
 .hero__monogram {
   width: clamp(440px, 60vw, 980px);
   height: auto;
@@ -553,21 +732,66 @@
           mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 55%, transparent 92%);
   animation: assetDrift 14s ease-in-out infinite;
   will-change: transform;
+  transition: opacity 600ms var(--ease-out);
 }
+.hero__monogram.is-hidden { opacity: 0; }
 @keyframes assetDrift {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50%      { transform: translate3d(0, -10px, 0); }
 }
-.hero__wash {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(226,180,180,0.2) 0%,
-    rgba(226,180,180,0.06) 28%,
-    transparent 55%
-  );
-  z-index: 1;
+
+/* Service descriptor — what we actually do, in plain English */
+.hero__service-line {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 24px 0 28px;
+  flex-wrap: wrap;
+}
+.hero__service-text {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 700;
+}
+.hero__service-meta {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-soft);
+}
+
+/* Click toast */
+.monogram-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(11,12,16,0.92);
+  border: 1px solid var(--rule-rose);
+  color: var(--alabaster);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
+  backdrop-filter: blur(8px);
+}
+.monogram-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.monogram-toast::before {
+  content: "↻";
+  color: var(--rose);
+  margin-right: 10px;
+  display: inline-block;
 }
 .hero__inner {
   position: relative;
@@ -658,49 +882,118 @@
   .strip__star { animation: none; }
 }
 
-/* ============== MANIFESTO ============== */
-.manifesto__inner {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
+/* ============== MANIFESTO (editorial / asymmetric / numbered) ============== */
+.manifesto--editorial { padding: clamp(80px, 12vw, 180px) 0; }
+.manifesto__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(60px, 8vw, 120px);
+  margin: 0;
+  padding: 0;
 }
-.manifesto__pull {
-  font-size: clamp(42px, 5.8vw, 88px);
-  margin: 0 auto 48px;
-  max-width: 14ch;
-}
-.manifesto__body p {
-  font-family: var(--f-display);
-  font-style: italic;
-  font-size: clamp(16px, 1.8vw, 20px);
-  line-height: 1.65;
-  color: var(--text-soft);
-  margin: 0 0 18px;
-}
-
-/* ============== WORK GRID ============== */
-.work-grid__list {
+.manifesto__statement {
   display: grid;
-  gap: clamp(40px, 5vw, 72px);
-}
-.work-card {
+  grid-template-columns: 140px 1fr;
+  gap: clamp(20px, 3vw, 48px);
+  align-items: start;
   position: relative;
 }
+.manifesto__statement--left {
+  max-width: 72%;
+  margin-right: auto;
+  padding-left: 0;
+}
+.manifesto__statement--right {
+  max-width: 72%;
+  margin-left: auto;
+  padding-left: clamp(40px, 8vw, 120px);
+}
+.manifesto__num {
+  font-size: clamp(64px, 8.4vw, 132px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: var(--mat-quartz), var(--mat-quartz-base);
+  background-size: 200% 200%, 200% 100%;
+  background-blend-mode: screen, normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: quartzDrift 13s ease-in-out infinite;
+}
+.manifesto__head {
+  font-size: clamp(34px, 5vw, 76px);
+  margin: 0 0 22px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.manifesto__head em {
+  font-style: italic;
+  background: var(--mat-quartz), var(--mat-quartz-base);
+  background-size: 200% 200%, 200% 100%;
+  background-blend-mode: screen, normal;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: quartzDrift 13s ease-in-out infinite;
+}
+.manifesto__caption {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0;
+  max-width: 48ch;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 749px) {
+  .manifesto__statement {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .manifesto__num { font-size: 56px; }
+}
+
+/* ============== WORK GRID — zigzag editorial ============== */
+.work-grid__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(60px, 8vw, 130px);
+  position: relative;
+}
+.work-card { position: relative; }
 .work-card__link {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
   align-items: center;
-  padding: 28px 0;
-  border-top: 1px solid var(--rule);
-  transition: padding-left 480ms var(--ease-out), background 480ms var(--ease-out);
+  padding: 24px 0;
+  transition: padding-left 480ms var(--ease-out), padding-right 480ms var(--ease-out);
 }
-.work-card__link:hover {
-  padding-left: 24px;
+/* Zigzag — even cards flip direction + offset */
+.work-card:nth-child(even) .work-card__link {
+  grid-template-columns: 1fr 1.3fr;
+  direction: rtl;
+  text-align: right;
+  margin-left: auto;
+  max-width: 92%;
 }
-.work-card:last-child .work-card__link {
-  border-bottom: 1px solid var(--rule);
-}
+.work-card:nth-child(even) .work-card__link > * { direction: ltr; }
+.work-card:nth-child(odd) .work-card__link { max-width: 92%; }
+
+.work-card__link:hover { padding-left: 24px; }
+.work-card:nth-child(even) .work-card__link:hover { padding-left: 0; padding-right: 24px; }
+
+/* Scale variation — middle card stands out */
+.work-card:nth-child(2) .work-card__visual { aspect-ratio: 16 / 13; }
 .work-card__visual {
   aspect-ratio: 16 / 11;
   overflow: hidden;
@@ -806,18 +1099,85 @@
   padding-left: 10px;
 }
 
-/* ============== FLORIDA ============== */
-.florida__inner {
+/* ============== FLORIDA — CINEMATIC ============== */
+.florida--cinematic { padding: clamp(80px, 12vw, 160px) 0; }
+.florida__stage {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: clamp(40px, 6vw, 96px);
   align-items: center;
+  min-height: 70vh;
+  padding: clamp(28px, 4vw, 56px) 0;
 }
 .florida__map {
-  max-width: 360px;
-  margin: 0 auto;
   position: relative;
+  max-width: none;
+  width: 100%;
+  filter: drop-shadow(0 30px 80px rgba(226,180,180,0.18));
 }
+.florida__map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 80vh;
+}
+.florida__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 460px;
+}
+.florida__cap-eyebrow {
+  margin: 0;
+  color: var(--rose);
+  font-weight: 700;
+}
+.florida__cap-pull {
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.05;
+  margin: 0;
+  max-width: 16ch;
+}
+.florida__cap-pull em {
+  font-style: italic;
+  background: var(--mat-quartz), var(--mat-quartz-base);
+  background-size: 200% 200%, 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: quartzDrift 13s ease-in-out infinite;
+}
+.florida__cap-lead {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* Cities rail */
+.florida__cities-rail {
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: clamp(20px, 3vw, 48px);
+  align-items: baseline;
+}
+.florida__cities-label { color: var(--rose); font-weight: 700; }
+.florida__list-tag {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-fade);
+  margin-left: 4px;
+}
+.florida__list strong { font-weight: 700; }
 .florida__map svg { width: 100%; height: auto; display: block; }
 .florida__cities circle {
   fill: var(--rose);
@@ -828,35 +1188,57 @@
 .florida__cities circle:nth-child(3) { animation-delay: 0.4s; }
 .florida__cities circle:nth-child(4) { animation-delay: 0.6s; }
 .florida__cities circle:nth-child(5) { animation-delay: 0.8s; }
-.florida__cities circle:nth-child(6) { animation-delay: 1.0s; fill: #F2D1D1; }
-.florida__cities circle:nth-child(7) { animation-delay: 1.2s; }
-.florida__cities circle:nth-child(8) { animation-delay: 1.4s; }
+.florida__cities circle:nth-child(6) { animation-delay: 1.0s; }
 @keyframes florCityPulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50%      { opacity: 1; transform: scale(1.3); }
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.25); }
 }
+
+/* Greenacres HQ — accented + ringed */
+.florida__hq {
+  fill: #F2D1D1 !important;
+  animation: none !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgba(226,180,180,0.7));
+}
+.florida__hq-ring {
+  fill: none;
+  stroke: var(--rose);
+  stroke-width: 0.6;
+  opacity: 0.6;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: florHqRing 3.2s ease-in-out infinite;
+}
+@keyframes florHqRing {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* HQ label */
+.florida__hq-label text { font-weight: 600; }
+
 @media (prefers-reduced-motion: reduce) {
   .florida__cities circle { animation: none; opacity: 0.85; }
-}
-.florida__lead {
-  font-family: var(--f-display);
-  font-style: italic;
-  font-size: clamp(18px, 1.8vw, 22px);
-  line-height: 1.55;
-  color: var(--text-soft);
-  margin: 0 0 28px;
-  max-width: 48ch;
+  .florida__hq-ring { animation: none; opacity: 0.5; }
 }
 .florida__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px 24px;
-  margin: 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 0;
   font-family: var(--f-mono);
   font-size: 13px;
   color: var(--alabaster);
 }
-.florida__remote { margin: 0; }
+.florida__list li::after {
+  content: "·";
+  color: var(--rose);
+  opacity: 0.5;
+  margin-left: 22px;
+}
+.florida__list li:last-child::after { content: ""; margin: 0; }
+.florida__remote { margin: 0; white-space: nowrap; }
 
 /* ============== STUDIO NOTE ============== */
 .studio-note__inner {
@@ -971,7 +1353,8 @@
 @media (max-width: 1023px) {
   .work-card__link { grid-template-columns: 1fr; gap: 24px; }
   .work-card__link:hover { padding-left: 0; }
-  .florida__inner { grid-template-columns: 1fr; }
+  .florida__stage { grid-template-columns: 1fr; gap: 32px; min-height: auto; }
+  .florida__cities-rail { grid-template-columns: 1fr; gap: 18px; }
   .studio-note__inner { grid-template-columns: 1fr; text-align: center; }
   .studio-note__signature { justify-content: center; }
   .studio-note__body p { max-width: none; }
@@ -982,10 +1365,179 @@
   .hero__strip { position: static; padding: 16px 0 0; flex-direction: column; gap: 8px; align-items: flex-start; }
   .approach__phase { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
   .approach__numeral { font-size: 56px; }
-  .florida__list { grid-template-columns: 1fr; }
+  .florida__list { gap: 4px 14px; }
+  .florida__list li::after { margin-left: 14px; }
 }
 
 </style>
+
+<!-- ========== THREE.JS 3D MONOGRAM ========== -->
+<script type="module">
+import * as THREE          from 'three';
+import { FontLoader }      from 'three/addons/loaders/FontLoader.js';
+import { TextGeometry }    from 'three/addons/geometries/TextGeometry.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+(function initMonogram3D() {
+  const container = document.getElementById('monogram3d');
+  if (!container) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Scene
+  const scene = new THREE.Scene();
+  const w = () => container.clientWidth || 600;
+  const h = () => container.clientHeight || 600;
+
+  // Camera
+  const camera = new THREE.PerspectiveCamera(34, w() / h(), 0.1, 100);
+  camera.position.set(0, 0.2, 9);
+
+  // Renderer (transparent so the page bg shows through)
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(w(), h());
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.6;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  container.appendChild(renderer.domElement);
+
+  // Environment map — instant studio reflections via PMREMGenerator
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  // Lighting — sculpt key + rose rim + cream fill
+  scene.add(new THREE.AmbientLight(0xfff5f0, 0.55));
+
+  const keyLight = new THREE.DirectionalLight(0xffffff, 2.6);
+  keyLight.position.set(3, 4, 6);
+  scene.add(keyLight);
+
+  const rimRose = new THREE.PointLight(0xE2B4B4, 3.2, 18);
+  rimRose.position.set(-4, 2, -2);
+  scene.add(rimRose);
+
+  const fillCream = new THREE.PointLight(0xF7F5F0, 1.0, 12);
+  fillCream.position.set(4, -1, 4);
+  scene.add(fillCream);
+
+  const underglow = new THREE.PointLight(0xF2D1D1, 0.8, 8);
+  underglow.position.set(0, -2.5, 2);
+  scene.add(underglow);
+
+  // Rose-quartz polished material — bright + reflective for the boutique feel
+  const material = new THREE.MeshPhysicalMaterial({
+    color: 0xE2B4B4,
+    metalness: 0.65,
+    roughness: 0.18,
+    clearcoat: 0.6,
+    clearcoatRoughness: 0.15,
+    sheen: 0.4,
+    sheenColor: 0xF2D1D1,
+    envMapIntensity: 1.4,
+  });
+
+  let monogram = null;
+
+  const fontLoader = new FontLoader();
+  fontLoader.load(
+    'https://unpkg.com/three@0.169.0/examples/fonts/helvetiker_bold.typeface.json',
+    (font) => {
+      const geo = new TextGeometry('ZS', {
+        font,
+        size: 2.4,
+        depth: 0.72,
+        bevelEnabled: true,
+        bevelThickness: 0.10,
+        bevelSize: 0.06,
+        bevelSegments: 5,
+        curveSegments: 14,
+      });
+      geo.center();
+
+      monogram = new THREE.Mesh(geo, material);
+      // Start slightly angled — reads more sculptural than a flat-on letterform
+      monogram.rotation.set(-0.08, -0.18, 0);
+      scene.add(monogram);
+
+      // Crossfade: hide PNG fallback, show canvas
+      const png = document.querySelector('.hero__monogram');
+      if (png) png.classList.add('is-hidden');
+      container.classList.add('is-ready');
+    },
+    undefined,
+    (err) => {
+      // Font failed to load → keep PNG fallback visible
+      console.warn('[Zuniga 3D] font failed to load — staying on PNG fallback', err);
+    }
+  );
+
+  // Cursor target rotation
+  let targetRotY = 0, targetRotX = 0;
+  let scaleTarget = 1;
+
+  window.addEventListener('pointermove', (e) => {
+    const nx = (e.clientX / window.innerWidth)  - 0.5;
+    const ny = (e.clientY / window.innerHeight) - 0.5;
+    targetRotY = nx * 0.55;
+    targetRotX = ny * -0.30;
+  });
+
+  // Click → pulse + toast feedback (v1 hook; v2 will unfold the principles)
+  function pulse() {
+    scaleTarget = 1.12;
+    showToast('Click coming soon — interactive studio reveal');
+    setTimeout(() => { scaleTarget = 1; }, 520);
+    container.dispatchEvent(new CustomEvent('monogram-click', { bubbles: true }));
+  }
+  container.addEventListener('click', pulse);
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pulse(); }
+  });
+
+  function showToast(text) {
+    const t = document.getElementById('monogramToast');
+    if (!t) return;
+    t.textContent = text;
+    t.classList.add('is-visible');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => t.classList.remove('is-visible'), 2600);
+  }
+
+  // Resize
+  function onResize() {
+    const W = w(), H = h();
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  }
+  window.addEventListener('resize', onResize);
+
+  // Loop
+  const clock = new THREE.Clock();
+  function tick() {
+    requestAnimationFrame(tick);
+    const t = clock.getElapsedTime();
+
+    if (monogram) {
+      // Idle: gentle oscillation around Y instead of full rotation —
+      // keeps the ZS readable as a brand mark while feeling alive
+      const oscY = Math.sin(t * 0.32) * 0.35;
+      monogram.rotation.y += ((oscY + targetRotY * 0.8) - monogram.rotation.y) * 0.045;
+      monogram.rotation.x += ((-0.08 + targetRotX * 0.6) - monogram.rotation.x) * 0.06;
+
+      // Subtle vertical float
+      monogram.position.y = Math.sin(t * 0.6) * 0.06;
+
+      // Click pulse (lerped)
+      const s = monogram.scale.x + (scaleTarget - monogram.scale.x) * 0.14;
+      monogram.scale.set(s, s, s);
+    }
+
+    renderer.render(scene, camera);
+  }
+  tick();
+})();
+</script>
 
 </body>
 </html>

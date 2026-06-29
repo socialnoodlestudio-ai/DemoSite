@@ -300,6 +300,31 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   border: 1px solid var(--alabaster);
   transition: transform 220ms var(--ease-out), background 220ms ease, color 220ms ease;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Chrome shimmer sweep — every 5s a soft highlight crosses the button */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255,255,255,0.7) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: btnShimmer 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes btnShimmer {
+  0%, 70%, 100% { transform: translateX(-100%); }
+  85%           { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::before { animation: none; }
 }
 .btn-primary:hover {
   background: var(--rose);
@@ -494,3 +519,53 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .relative { position: relative; }
 .z-2 { z-index: 2; }
 .z-10 { z-index: 10; }
+
+
+/* ---------------- Side scroll progress indicator ---------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; bottom: 0;
+  right: 14px;
+  width: 1px;
+  z-index: 90;
+  pointer-events: none;
+}
+.scroll-progress__track {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 1px;
+  height: 60vh;
+  background: var(--rule);
+}
+.scroll-progress__fill {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--rose), var(--rose-soft));
+  transition: height 120ms linear;
+}
+.scroll-progress__dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 7px; height: 7px;
+  background: var(--rose);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px var(--rose);
+}
+.scroll-progress__readout {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 12px;
+  transform: translateX(-50%);
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  color: var(--rose);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+@media (max-width: 749px) { .scroll-progress { display: none; } }
