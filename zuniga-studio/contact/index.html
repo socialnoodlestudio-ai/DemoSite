@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Begin a Project — Zuniga Studio</title>
+<meta name="description" content="Start a project with Zuniga Studio. Personal inquiry intake, replied to within 24 hours by founder Clarisa Zuniga." />
+<meta name="theme-color" content="#0B0C10" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../assets/zuniga.css" />
+<script src="../assets/zuniga.js" defer></script>
+</head>
+
+<body class="contact-page">
+
+<div class="aura" aria-hidden="true"></div>
+<div class="grid-canvas" aria-hidden="true">
+  <div class="col-lines">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="horizon h-top"></div>
+</div>
+
+<header class="top-nav">
+  <a class="top-nav__brand" href="../">ZUNIGA STUDIO</a>
+  <ul class="top-nav__menu">
+    <li><a href="../work/">Work</a></li>
+    <li><a href="../studio/">Studio</a></li>
+    <li><a href="../#approach">Approach</a></li>
+    <li><a href="./" aria-current="page">Contact</a></li>
+  </ul>
+  <div class="top-nav__telemetry">
+    <span class="dot"></span>
+    <span id="telemetry-readout">[ 2026 INDEX · 0000 ]</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============== CONTACT HERO ============== -->
+  <section class="contact-hero">
+    <div class="page-width">
+      <div class="contact-hero__meta reveal-up">
+        <span class="mono-eyebrow">[ Begin ]</span>
+        <span class="mono-meta">Personally replied · within 24 hours</span>
+      </div>
+      <h1 class="contact-hero__head display reveal-up delay-1">
+        Tell us about <em>the work.</em>
+      </h1>
+      <p class="contact-hero__lead reveal-up delay-2">
+        Every inquiry comes directly to Clarisa. No intake forms routed
+        through a sales team. No "we'll get back to you in 5–7 business days."
+        Write what's on your mind — we'll write back.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT FORM + STUDIO INFO ============== -->
+  <section class="section contact-grid">
+    <div class="page-width">
+      <div class="contact-grid__inner">
+
+        <!-- Form -->
+        <div class="contact-form reveal-up">
+          <div class="contact-form__head">
+            <span class="mono-label">— Inquiry</span>
+            <h2 class="contact-form__head-title display">Write to the studio</h2>
+          </div>
+
+          <form class="contact-form__form" action="mailto:hello@zunigastudio.com" method="post" enctype="text/plain" novalidate>
+            <div class="contact-form__row">
+              <label for="name">
+                <span class="contact-form__label">Your name</span>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="Clarisa Zuniga" />
+              </label>
+              <label for="email">
+                <span class="contact-form__label">Email</span>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" />
+              </label>
+            </div>
+            <div class="contact-form__row">
+              <label for="company">
+                <span class="contact-form__label">Business or project name</span>
+                <input id="company" name="company" type="text" placeholder="Optional" />
+              </label>
+              <label for="location">
+                <span class="contact-form__label">City / state</span>
+                <input id="location" name="location" type="text" placeholder="Greenacres, FL" />
+              </label>
+            </div>
+
+            <label class="contact-form__field">
+              <span class="contact-form__label">What kind of project?</span>
+              <span class="contact-form__chips">
+                <label class="chip"><input type="checkbox" name="kind[]" value="new-site" /> <span>New website</span></label>
+                <label class="chip"><input type="checkbox" name="kind[]" value="redesign" /> <span>Redesign / refresh</span></label>
+                <label class="chip"><input type="checkbox" name="kind[]" value="brand" /> <span>Brand identity</span></label>
+                <label class="chip"><input type="checkbox" name="kind[]" value="ecom" /> <span>E-commerce</span></label>
+                <label class="chip"><input type="checkbox" name="kind[]" value="seo" /> <span>Local SEO</span></label>
+                <label class="chip"><input type="checkbox" name="kind[]" value="other" /> <span>Not sure yet</span></label>
+              </span>
+            </label>
+
+            <label class="contact-form__field">
+              <span class="contact-form__label">Budget range (rough)</span>
+              <span class="contact-form__chips">
+                <label class="chip"><input type="radio" name="budget" value="under-5k" /> <span>Under $5K</span></label>
+                <label class="chip"><input type="radio" name="budget" value="5-15k" /> <span>$5K–$15K</span></label>
+                <label class="chip"><input type="radio" name="budget" value="15-30k" /> <span>$15K–$30K</span></label>
+                <label class="chip"><input type="radio" name="budget" value="30k-plus" /> <span>$30K+</span></label>
+                <label class="chip"><input type="radio" name="budget" value="discuss" /> <span>Let's discuss</span></label>
+              </span>
+            </label>
+
+            <label class="contact-form__field">
+              <span class="contact-form__label">Timing</span>
+              <span class="contact-form__chips">
+                <label class="chip"><input type="radio" name="timing" value="asap" /> <span>ASAP</span></label>
+                <label class="chip"><input type="radio" name="timing" value="this-quarter" /> <span>This quarter</span></label>
+                <label class="chip"><input type="radio" name="timing" value="next-quarter" /> <span>Next quarter</span></label>
+                <label class="chip"><input type="radio" name="timing" value="exploring" /> <span>Still exploring</span></label>
+              </span>
+            </label>
+
+            <label for="message" class="contact-form__field">
+              <span class="contact-form__label">Tell us about it</span>
+              <textarea id="message" name="message" rows="6" required placeholder="What you're building, who it's for, what's broken about the current state, what you'd like to feel about the new one. Anything that helps us understand."></textarea>
+            </label>
+
+            <div class="contact-form__submit-row">
+              <button type="submit" class="btn-primary">Send Inquiry</button>
+              <span class="contact-form__assure">
+                <span class="mono-meta">Replied within 24 hours · By Clarisa, directly</span>
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Aside -->
+        <aside class="contact-aside">
+          <div class="contact-aside__card reveal-up delay-1">
+            <span class="mono-label">— Studio</span>
+            <p class="contact-aside__head display">Zuniga Studio</p>
+            <p class="contact-aside__body">
+              Located in Greenacres, Florida. Open by appointment for in-person
+              working sessions Mondays through Thursdays.
+            </p>
+            <ul class="contact-aside__list">
+              <li><span class="mono-label">Email</span><a href="mailto:hello@zunigastudio.com">hello@zunigastudio.com</a></li>
+              <li><span class="mono-label">Hours</span><span>Mon–Thu · 9 AM – 6 PM ET</span></li>
+              <li><span class="mono-label">Response</span><span>Within 24 hours, by founder</span></li>
+            </ul>
+          </div>
+
+          <div class="contact-aside__card reveal-up delay-2" id="schedule">
+            <span class="mono-label">— Schedule</span>
+            <p class="contact-aside__head display">Prefer a conversation?</p>
+            <p class="contact-aside__body">
+              Book a 30-minute discovery call. We'll talk through what you're
+              building, listen to your constraints, and tell you honestly
+              whether we're the right studio for the project.
+            </p>
+            <a class="btn-secondary" href="mailto:hello@zunigastudio.com?subject=Discovery%20call%20request">
+              Request a Discovery Call <span class="arrow">→</span>
+            </a>
+          </div>
+
+          <div class="contact-aside__card reveal-up delay-3">
+            <span class="mono-label">— Slots</span>
+            <p class="contact-aside__head display">Current availability</p>
+            <ul class="contact-aside__slots">
+              <li>
+                <span class="slot-name">Q3 2026</span>
+                <span class="slot-status slot-status--filled">Booked</span>
+              </li>
+              <li>
+                <span class="slot-name">Q4 2026</span>
+                <span class="slot-status slot-status--open">1 slot left</span>
+              </li>
+              <li>
+                <span class="slot-name">Q1 2027</span>
+                <span class="slot-status slot-status--open">2 slots open</span>
+              </li>
+            </ul>
+            <p class="contact-aside__fine">
+              Slots fill 2–3 months ahead. If you're considering a project,
+              this is the right time to write.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="page-width">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <span class="wordmark">ZUNIGA STUDIO</span>
+        <p class="foot__voice">
+          A small Florida studio for ambitious small businesses. Strategy, brand,
+          and hand-coded websites built with the restraint of a luxury consultancy.
+        </p>
+        <p class="foot__locale"><span class="foot__locale-label">Studio</span> Greenacres, Florida</p>
+      </div>
+      <div class="foot__col">
+        <h4 class="foot__heading">Work</h4>
+        <ul class="foot__list">
+          <li><a href="../work/">All Work</a></li>
+          <li><a href="../work/pf-auto-style/">PF Auto Style</a></li>
+          <li><a href="../work/">Devi's Exclusive Fashion</a></li>
+          <li><a href="../work/">American Pressure Clean</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h4 class="foot__heading">Studio</h4>
+        <ul class="foot__list">
+          <li><a href="../studio/">About</a></li>
+          <li><a href="../studio/#approach">Approach</a></li>
+          <li><a href="../#journal">Field Notes</a></li>
+          <li><a href="./" aria-current="page">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot__col">
+        <h4 class="foot__heading">Begin</h4>
+        <ul class="foot__list">
+          <li><a href="./">Start a Project</a></li>
+          <li><a href="#schedule">Schedule a Conversation</a></li>
+          <li><a href="mailto:hello@zunigastudio.com">hello@zunigastudio.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__cities">
+      <span class="foot__cities-label">Serving</span>
+      <ul class="foot__cities-list">
+        <li>Greenacres</li>
+        <li>West Palm Beach</li>
+        <li>Boca Raton</li>
+        <li>Fort Lauderdale</li>
+        <li>Miami</li>
+        <li>Tampa</li>
+        <li>Orlando</li>
+        <li>Jacksonville</li>
+        <li>&amp; statewide</li>
+      </ul>
+    </div>
+    <div class="foot__rule"></div>
+    <div class="foot__bottom">
+      <span>© 2026 Zuniga Studio · All work selected by hand</span>
+      <span class="italic text-fade">Designed &amp; coded in Florida</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.contact-hero { padding: clamp(120px, 16vw, 200px) 0 clamp(40px, 6vw, 80px); }
+.contact-hero__meta { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+.contact-hero__head { font-size: clamp(48px, 7.4vw, 128px); max-width: 18ch; margin: 0 0 32px; }
+.contact-hero__lead {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.55;
+  color: var(--text-soft);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* Grid */
+.contact-grid__inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+
+/* Form */
+.contact-form { padding: 0; }
+.contact-form__head { margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+.contact-form__head span { display: block; color: var(--rose); margin-bottom: 10px; }
+.contact-form__head-title { font-size: clamp(28px, 3.4vw, 44px); margin: 0; }
+.contact-form__form { display: flex; flex-direction: column; gap: 26px; }
+.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.contact-form__field { display: flex; flex-direction: column; gap: 12px; }
+.contact-form__label {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+}
+.contact-form__form label { display: flex; flex-direction: column; gap: 8px; }
+.contact-form__form input[type="text"],
+.contact-form__form input[type="email"],
+.contact-form__form textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 10px 0;
+  color: var(--alabaster);
+  font-family: var(--f-display);
+  font-size: 16px;
+  font-style: italic;
+  transition: border-color 240ms ease;
+  outline: 0;
+}
+.contact-form__form input::placeholder,
+.contact-form__form textarea::placeholder {
+  color: var(--text-fade);
+  font-style: italic;
+}
+.contact-form__form input:focus,
+.contact-form__form textarea:focus {
+  border-bottom-color: var(--rose);
+}
+.contact-form__form textarea { resize: vertical; min-height: 140px; }
+
+.contact-form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 500;
+  transition: all 240ms var(--ease-out);
+}
+.chip:hover { border-color: var(--rose); color: var(--alabaster); }
+.chip input { display: none; }
+.chip:has(input:checked) { background: var(--rose); color: var(--ink); border-color: var(--rose); }
+.chip span { white-space: nowrap; }
+
+.contact-form__submit-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+.contact-form__assure { color: var(--rose); }
+.contact-form__assure .mono-meta { color: var(--text-fade); }
+
+/* Aside */
+.contact-aside { display: flex; flex-direction: column; gap: 22px; }
+.contact-aside__card {
+  padding: 28px 26px;
+  border: 1px solid var(--rule);
+  background: rgba(247,245,240,0.015);
+}
+.contact-aside__card .mono-label { display: block; color: var(--rose); margin-bottom: 8px; }
+.contact-aside__head {
+  font-size: 22px;
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+.contact-aside__body {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 0 0 18px;
+}
+.contact-aside__list { display: flex; flex-direction: column; gap: 12px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.contact-aside__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--f-mono); font-size: 12px; }
+.contact-aside__list .mono-label { display: inline-block; color: var(--rose); margin: 0; }
+.contact-aside__list a { color: var(--alabaster); transition: color 200ms; }
+.contact-aside__list a:hover { color: var(--rose); }
+
+.contact-aside__slots { display: flex; flex-direction: column; gap: 12px; }
+.contact-aside__slots li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+}
+.contact-aside__slots li:last-child { border-bottom: 0; }
+.slot-name { color: var(--alabaster); letter-spacing: 0.04em; }
+.slot-status { letter-spacing: 0.18em; text-transform: uppercase; font-size: 10.5px; }
+.slot-status--filled { color: var(--text-fade); }
+.slot-status--open { color: var(--rose); font-weight: 700; }
+.contact-aside__fine {
+  margin: 14px 0 0;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  .contact-grid__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 749px) {
+  .contact-form__row { grid-template-columns: 1fr; }
+}
+</style>
+
+</body>
+</html>
