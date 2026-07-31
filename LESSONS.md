@@ -35,6 +35,19 @@ Capture the answer in `NOTES.md` under "Design direction" before building.
 
 ---
 
+## 2026-07-30 — Verify canvas animation by pixel assertion, not screenshots
+
+**Context:** Building the Zuniga particle-genesis hero (`zuniga-studio/assets/genesis.js`), a full-viewport canvas animation. Screenshots are the obvious way to check it.
+**Problem:** Two independent failures made screenshots useless. (1) `requestAnimationFrame` does not fire in a backgrounded tab, so a canvas captured while the Browser pane wasn't fronted came back as untouched black — indistinguishable from a broken animation. (2) Later the pane stopped compositing entirely and every screenshot timed out after 5s. Both times the animation was fine and the *harness* was lying.
+**Fix / new rule:** Assert on the pixel buffer instead of looking at a picture.
+- `getImageData` over the whole canvas, then count pixels above a brightness threshold. `brightest === 0` means literally nothing was drawn (an untouched `alpha:false` canvas reads as opaque black), which distinguishes "never painted" from "painted dark."
+- Compute the centre of mass of bright pixels and compare it to where the artwork is supposed to be.
+- Compute the ratio of bright pixels *inside* the expected footprint versus outside. For the finished monogram this was 0.974 — decisive, and no image needed.
+- Scan a single row through the artwork and count runs of consecutive lit pixels. Two runs through the middle of a two-letter mark confirmed both glyphs rendered *and* that they weren't colliding.
+- To inspect a specific moment, monkey-patch `window.requestAnimationFrame` to feed the module one fixed timestamp repeatedly (first call `0` to seed its clock, every later call the target time). Drive it with `setTimeout`, not the real rAF, so it works in a background tab.
+**Also:** a timeline guard written as `if (!start) start = ts` silently re-seeds whenever `ts` is `0`, freezing the animation at t=0. Real rAF timestamps are never 0, so this only appears under instrumentation — use `start = -1` and `if (start < 0)`.
+**Status:** confirmed
+
 ## 2026-05-13 — Major directory sites block automated WebFetch
 
 **Context:** Researching American Pressure Clean (Lake Worth, FL) — small operator, no website, ~43 Yelp reviews.
