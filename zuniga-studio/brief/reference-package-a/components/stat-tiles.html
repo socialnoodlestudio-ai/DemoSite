@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" name="Metric tiles" subtitle="100+ / 2.4X / 90%+ / 24/7 — outcome row" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Stat tiles — Package A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-gold:#B8895E;--text-hi:#EDE7E0;--text-mid:#A39C95}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 56px;min-height:100vh}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:32px}
+  .row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid rgba(200,164,160,0.35);border-radius:6px;
+    background:linear-gradient(180deg,rgba(28,29,34,0.6),rgba(10,10,12,0.4));
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 32px rgba(200,164,160,0.12);
+  }
+  .tile{padding:36px 24px;text-align:center;border-right:1px solid rgba(200,164,160,0.18)}
+  .tile:last-child{border-right:0}
+  .tile__num{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:56px;line-height:1;letter-spacing:-0.02em;color:var(--text-hi);margin-bottom:10px}
+  .tile__label{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-mid)}
+  .footnote{margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-mid);line-height:1.7;max-width:60ch}
+  @media (max-width:780px){.row{grid-template-columns:repeat(2,1fr)}.tile{border-right:1px solid rgba(200,164,160,0.18);border-bottom:1px solid rgba(200,164,160,0.18)}.tile:nth-child(2n){border-right:0}.tile:nth-last-child(-n+2){border-bottom:0}}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 02 · Components · Stat tiles</div>
+  <div class="row">
+    <div class="tile"><div class="tile__num">100+</div><div class="tile__label">Websites launched</div></div>
+    <div class="tile"><div class="tile__num">2.4×</div><div class="tile__label">Avg conversion increase</div></div>
+    <div class="tile"><div class="tile__num">90%+</div><div class="tile__label">Client retention rate</div></div>
+    <div class="tile"><div class="tile__num">24/7</div><div class="tile__label">Support &amp; maintenance</div></div>
+  </div>
+  <p class="footnote">// Numbers animate from 0 → final on scroll-into-view (~800ms, cinematic easing). Tiles share a single rose-gold-glow stroke + soft inner gradient. Used as the closing proof row of the Phase 5 assembled demo.</p>
+</body>
+</html>

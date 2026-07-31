@@ -1,0 +1,119 @@
+<!-- @dsCard group="Phases" name="5-phase storyboard" subtitle="Genesis → Take place → Architecture → Value → Engineering" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Storyboard — Package A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-gold:#B8895E;--gold:#D4AF37;--alabaster:#F4EFE6;--text-hi:#EDE7E0;--text-mid:#A39C95;--ink-text:#1A1A1F}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 40px;min-height:100vh}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;letter-spacing:-0.018em;margin-bottom:32px}
+  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .frame{background:#131318;border:1px solid rgba(200,164,160,0.18);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+  .frame__num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;color:var(--rose-gold);padding:14px 14px 6px;text-transform:uppercase}
+  .frame__head{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text-hi);padding:0 14px 4px;letter-spacing:-0.01em}
+  .frame__time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mid);padding:0 14px 12px;letter-spacing:0.1em}
+  .frame__viz{flex:1;min-height:200px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#1C1D22 0%,#0A0A0C 100%)}
+  .frame__body{padding:12px 14px 16px;font-family:'Inter',sans-serif;font-size:11px;line-height:1.55;color:var(--text-mid);border-top:1px solid rgba(200,164,160,0.10)}
+
+  /* Phase 1 — particles converging */
+  .viz1 .p{position:absolute;border-radius:50%;background:#E8C5B5;opacity:0.7;animation:p1 4s ease-in-out infinite}
+  .viz1 .p1{left:15%;top:25%;width:3px;height:3px}
+  .viz1 .p2{left:75%;top:20%;width:4px;height:4px;animation-delay:0.5s}
+  .viz1 .p3{left:25%;top:75%;width:3px;height:3px;animation-delay:1s}
+  .viz1 .p4{left:65%;top:70%;width:5px;height:5px;animation-delay:1.5s}
+  .viz1 .p5{left:50%;top:50%;width:3px;height:3px;background:var(--gold)}
+  @keyframes p1{50%{transform:translate(0,0) scale(0.5);opacity:0.3}}
+  .viz1 .zs-ghost{position:absolute;inset:0;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;background:linear-gradient(135deg,#E8C5B5,#B8895E);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0.25;letter-spacing:-0.04em}
+
+  /* Phase 2 — docked nav */
+  .viz2{padding:12px}
+  .viz2 .nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(200,164,160,0.18)}
+  .viz2 .nav__zs{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;background:linear-gradient(135deg,#E8C5B5,#B8895E);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.04em}
+  .viz2 .nav__items{display:flex;gap:8px;font-family:'Inter',sans-serif;font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid)}
+  .viz2 .stage{flex:1;display:grid;place-items:center;color:var(--text-mid);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;height:140px}
+
+  /* Phase 3 — wireframe */
+  .viz3{padding:14px;display:flex;align-items:center;justify-content:center}
+  .viz3 .wf{border:1px solid var(--rose);border-radius:4px;box-shadow:0 0 16px rgba(200,164,160,0.25);padding:10px;width:100%;max-width:200px}
+  .viz3 .wf__row{height:28px;border:1px solid var(--rose);border-radius:2px;margin-bottom:6px;box-shadow:0 0 6px rgba(200,164,160,0.15)}
+  .viz3 .wf__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+  .viz3 .wf__cols > div{height:22px;border:1px solid var(--rose);border-radius:2px;box-shadow:0 0 6px rgba(200,164,160,0.15)}
+
+  /* Phase 4 — typography */
+  .viz4{padding:18px;display:grid;place-items:center;text-align:center}
+  .viz4 h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose);letter-spacing:-0.018em;line-height:1.05}
+
+  /* Phase 5 — assembled */
+  .viz5{padding:0;display:flex;align-items:center;justify-content:center}
+  .viz5 .demo{background:var(--alabaster);color:var(--ink-text);border-radius:4px;width:90%;padding:14px;font-family:'Inter',sans-serif}
+  .viz5 .demo h3{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;letter-spacing:-0.01em;line-height:1.05;margin-bottom:6px}
+  .viz5 .demo p{font-size:8px;color:#5A574F;line-height:1.4;margin-bottom:8px}
+  .viz5 .demo .btn{display:inline-block;background:var(--rose);color:var(--ink-text);font-size:7px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:2px;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 03 · Phases · Storyboard</div>
+  <h1>Hero arc, in 5 frames.</h1>
+  <div class="strip">
+    <div class="frame">
+      <div class="frame__num">01 · Genesis</div>
+      <div class="frame__head">Brand Genesis</div>
+      <div class="frame__time">00:00 — 02:80</div>
+      <div class="frame__viz viz1">
+        <span class="p p1"></span><span class="p p2"></span><span class="p p3"></span><span class="p p4"></span><span class="p p5"></span>
+        <div class="zs-ghost">ZS</div>
+      </div>
+      <div class="frame__body">Dusty-rose particles drift, then gravitate toward centre. Form the ZS monogram.</div>
+    </div>
+    <div class="frame">
+      <div class="frame__num">02 · Take Place</div>
+      <div class="frame__head">Brand Docks</div>
+      <div class="frame__time">02:80 — 04:50</div>
+      <div class="frame__viz viz2">
+        <div class="nav"><span class="nav__zs">ZS</span><span class="nav__items"><span>HOME</span><span>SERV</span><span>WORK</span><span>ABOUT</span><span>CONTACT</span></span></div>
+        <div class="stage">// CAMERA OPENS</div>
+      </div>
+      <div class="frame__body">Logo scales down + floats to upper-left. Nav fades in. Camera opens.</div>
+    </div>
+    <div class="frame">
+      <div class="frame__num">03 · Architecture</div>
+      <div class="frame__head">Blueprint Draws</div>
+      <div class="frame__time">04:50 — 08:50</div>
+      <div class="frame__viz viz3">
+        <div class="wf">
+          <div class="wf__row"></div>
+          <div class="wf__row" style="height:18px"></div>
+          <div class="wf__cols"><div></div><div></div><div></div></div>
+        </div>
+      </div>
+      <div class="frame__body">Wireframe lines stroke in sequentially. Hero, services, case-study grid all appear as soft rose glow.</div>
+    </div>
+    <div class="frame">
+      <div class="frame__num">04 · Value</div>
+      <div class="frame__head">Headline Lands</div>
+      <div class="frame__time">08:50 — 10:80</div>
+      <div class="frame__viz viz4">
+        <h2>BUILT TO GROW.<br>DESIGNED TO CONVERT.</h2>
+      </div>
+      <div class="frame__body">Typography emerges in ink-drop easing. Frames the entire animation as a growth promise.</div>
+    </div>
+    <div class="frame">
+      <div class="frame__num">05 · Engineering</div>
+      <div class="frame__head">Site Materializes</div>
+      <div class="frame__time">10:80 — 18:00</div>
+      <div class="frame__viz viz5">
+        <div class="demo">
+          <h3>Your Business<br>Web Design</h3>
+          <p>More leads. More customers.</p>
+          <span class="btn">Let's build →</span>
+        </div>
+      </div>
+      <div class="frame__body">Metallic wave sweeps. Wireframes fill in. Typography, photography, micro-interactions activate.</div>
+    </div>
+  </div>
+</body>
+</html>

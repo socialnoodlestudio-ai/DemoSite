@@ -1,0 +1,41 @@
+<!-- @dsCard group="Foundations" name="Typography" subtitle="Cormorant Garamond display + Inter body + JetBrains Mono labels" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Typography — Package A</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0A0A0C;--rose:#C8A4A0;--rose-gold:#B8895E;--text-hi:#EDE7E0;--text-mid:#A39C95;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 56px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:32px}
+  .row{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid rgba(237,231,224,0.08);align-items:baseline}
+  .row__meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-mid);letter-spacing:0.08em;text-transform:uppercase;padding-top:8px}
+  .display-xxl{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:96px;line-height:0.95;letter-spacing:-0.02em;color:var(--rose)}
+  .display-xl{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:64px;line-height:1.0;letter-spacing:-0.018em}
+  .display-l{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;line-height:1.1;letter-spacing:-0.015em}
+  .display-italic{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:32px;color:var(--rose-gold)}
+  .body-l{font-family:'Inter',sans-serif;font-weight:400;font-size:20px;line-height:1.55;color:var(--text-hi)}
+  .body-m{font-family:'Inter',sans-serif;font-weight:400;font-size:15px;line-height:1.65;color:var(--text-mid)}
+  .body-s{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;line-height:1.65;color:var(--text-mid)}
+  .mono-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--rose)}
+  .mono-label{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-mid)}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 01 · Foundations · Type</div>
+  <div class="row"><div class="row__meta">Display XXL · 96/95</div><div class="display-xxl">Built to grow.</div></div>
+  <div class="row"><div class="row__meta">Display XL · 64/100</div><div class="display-xl">Designed to convert.</div></div>
+  <div class="row"><div class="row__meta">Display L · 42/110</div><div class="display-l">Websites engineered to attract, convert, and scale your business.</div></div>
+  <div class="row"><div class="row__meta">Display italic · 32</div><div class="display-italic">Crafted by hand.</div></div>
+  <div class="row"><div class="row__meta">Body L · 20/155</div><div class="body-l">Your business deserves a website that does more than look good — one that quietly does the work of growth while you focus on what you actually built the business to do.</div></div>
+  <div class="row"><div class="row__meta">Body M · 15/165</div><div class="body-m">More leads. More customers. More growth. You focus on your business. We handle the design, development, SEO, hosting, automations, and backend.</div></div>
+  <div class="row"><div class="row__meta">Body S · 13/165</div><div class="body-s">Average conversion increase across our last 12 launches — measured at 90 days post-launch.</div></div>
+  <div class="row"><div class="row__meta">Mono eyebrow · 11</div><div class="mono-eyebrow">// CASE STUDIES · WE'VE LAUNCHED 100+</div></div>
+  <div class="row"><div class="row__meta">Mono label · 12</div><div class="mono-label">WEBSITES LAUNCHED · CLIENT RETENTION RATE · SUPPORT &amp; MAINTENANCE</div></div>
+</body>
+</html>

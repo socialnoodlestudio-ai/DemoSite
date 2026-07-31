@@ -1,0 +1,85 @@
+<!-- @dsCard group="Foundations" name="Color palette" subtitle="Matte black + dusty rose + rose-gold, with restrained warm gold" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Colors — Package A</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:           #0A0A0C;
+    --ink-soft:      #131318;
+    --charcoal:      #1C1D22;
+    --rose:          #C8A4A0;
+    --rose-light:    #E8C5B5;
+    --rose-gold:     #B8895E;
+    --gold:          #D4AF37;
+    --alabaster:     #F4EFE6;
+    --text-hi:       #EDE7E0;
+    --text-mid:      #A39C95;
+    --text-low:      #6A6560;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--ink);
+    color:var(--text-hi);
+    font-family:'Inter',system-ui,sans-serif;
+    padding:48px 56px;
+    min-height:100vh;
+  }
+  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;letter-spacing:-0.02em;margin-bottom:6px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:32px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:36px}
+  .swatch{
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--ink-soft);
+  }
+  .swatch__chip{height:130px;position:relative}
+  .swatch__chip::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,0.04),transparent 60%);
+    pointer-events:none;
+  }
+  .swatch__meta{padding:14px 16px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6}
+  .swatch__name{color:var(--text-hi);letter-spacing:0.08em;font-weight:500;text-transform:uppercase;margin-bottom:4px}
+  .swatch__token{color:var(--text-mid)}
+  .swatch__hex{color:var(--rose-light);margin-top:4px}
+  .section-rule{height:1px;background:linear-gradient(to right,transparent,rgba(200,164,160,0.4),transparent);margin:48px 0 32px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;letter-spacing:-0.01em;color:var(--text-hi);margin-bottom:8px}
+  .note{font-size:13px;color:var(--text-mid);line-height:1.7;max-width:60ch}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 01 · Foundations · Palette</div>
+  <h1>Matte ink, dusty rose, restrained gold.</h1>
+  <p class="note">Primary accent is metallic dusty rose. Rose-gold appears only at edges and highlights. Warm gold appears as luxury punctuation in less than 10% of any frame. The palette is engineered to feel <em>cool, expensive, and architectural</em> — never sweet or sentimental.</p>
+
+  <h2 style="margin-top:48px">Surfaces</h2>
+  <div class="grid">
+    <div class="swatch"><div class="swatch__chip" style="background:var(--ink)"></div><div class="swatch__meta"><div class="swatch__name">Ink</div><div class="swatch__token">--ink</div><div class="swatch__hex">#0A0A0C</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--ink-soft)"></div><div class="swatch__meta"><div class="swatch__name">Ink Soft</div><div class="swatch__token">--ink-soft</div><div class="swatch__hex">#131318</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--charcoal)"></div><div class="swatch__meta"><div class="swatch__name">Charcoal</div><div class="swatch__token">--charcoal</div><div class="swatch__hex">#1C1D22</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--alabaster)"></div><div class="swatch__meta"><div class="swatch__name">Alabaster</div><div class="swatch__token">--alabaster</div><div class="swatch__hex">#F4EFE6</div></div></div>
+  </div>
+
+  <div class="section-rule"></div>
+  <h2>Accents</h2>
+  <div class="grid">
+    <div class="swatch"><div class="swatch__chip" style="background:var(--rose)"></div><div class="swatch__meta"><div class="swatch__name">Rose · Primary</div><div class="swatch__token">--rose</div><div class="swatch__hex">#C8A4A0</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--rose-light)"></div><div class="swatch__meta"><div class="swatch__name">Rose Light</div><div class="swatch__token">--rose-light</div><div class="swatch__hex">#E8C5B5</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--rose-gold)"></div><div class="swatch__meta"><div class="swatch__name">Rose Gold</div><div class="swatch__token">--rose-gold</div><div class="swatch__hex">#B8895E</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--gold)"></div><div class="swatch__meta"><div class="swatch__name">Gold · Reserved</div><div class="swatch__token">--gold</div><div class="swatch__hex">#D4AF37</div></div></div>
+  </div>
+
+  <div class="section-rule"></div>
+  <h2>Type</h2>
+  <div class="grid">
+    <div class="swatch"><div class="swatch__chip" style="background:var(--text-hi)"></div><div class="swatch__meta"><div class="swatch__name">Text · High</div><div class="swatch__token">--text-hi</div><div class="swatch__hex">#EDE7E0</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--text-mid)"></div><div class="swatch__meta"><div class="swatch__name">Text · Mid</div><div class="swatch__token">--text-mid</div><div class="swatch__hex">#A39C95</div></div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:var(--text-low)"></div><div class="swatch__meta"><div class="swatch__name">Text · Low</div><div class="swatch__token">--text-low</div><div class="swatch__hex">#6A6560</div></div></div>
+  </div>
+</body>
+</html>

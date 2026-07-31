@@ -1,0 +1,76 @@
+<!-- @dsCard group="Components" name="ZS monogram" subtitle="Hero centerpiece — dusty rose with rose-gold edge, idle shimmer" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>ZS Monogram — Package A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-light:#E8C5B5;--rose-gold:#B8895E;--gold:#D4AF37;--text-hi:#EDE7E0;--text-mid:#A39C95}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:32px 56px;gap:24px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose)}
+  .stage{
+    position:relative;border-radius:8px;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 45%, rgba(200,164,160,0.10), transparent 70%),
+      linear-gradient(180deg,#0A0A0C 0%,#131318 100%);
+  }
+  /* particle field */
+  .particle{position:absolute;border-radius:50%;background:var(--rose-light);opacity:0.5;animation:drift 8s ease-in-out infinite}
+  .particle.gold{background:var(--gold);opacity:0.6;width:2px;height:2px}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0)}
+    50%{transform:translate(4px,-6px)}
+  }
+  /* monogram */
+  .monogram{position:absolute;inset:0;display:grid;place-items:center}
+  .zs{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:280px;line-height:1;letter-spacing:-0.04em;position:relative;display:inline-block}
+  .zs__fill{
+    background:linear-gradient(135deg,#E8C5B5 0%,#C8A4A0 40%,#B8895E 100%);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+    text-shadow:none;
+    position:relative;
+    filter:drop-shadow(0 12px 40px rgba(200,164,160,0.35));
+  }
+  .zs__shimmer{
+    position:absolute;inset:0;
+    background:linear-gradient(100deg,transparent 35%,rgba(212,175,55,0.7) 50%,transparent 65%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    mix-blend-mode:overlay;
+    animation:shimmer 22s ease-in-out infinite;
+  }
+  @keyframes shimmer{
+    0%,90%,100%{background-position:-200% 0}
+    95%{background-position:200% 0}
+  }
+  .label{position:absolute;left:24px;bottom:24px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.32em;color:var(--rose);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--rose);box-shadow:0 0 8px var(--rose)}
+  .grid-bg{position:absolute;inset:0;opacity:0.06;background-image:linear-gradient(rgba(200,164,160,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(200,164,160,0.5) 1px,transparent 1px);background-size:48px 48px}
+  .footnote{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-mid);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 02 · Components · ZS Monogram</div>
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <span class="particle" style="left:18%;top:24%;width:3px;height:3px"></span>
+    <span class="particle" style="left:75%;top:18%;width:4px;height:4px"></span>
+    <span class="particle gold" style="left:62%;top:62%"></span>
+    <span class="particle" style="left:28%;top:68%;width:2px;height:2px;opacity:0.4"></span>
+    <span class="particle" style="left:85%;top:42%;width:3px;height:3px;opacity:0.3"></span>
+    <span class="particle gold" style="left:15%;top:48%"></span>
+    <span class="particle" style="left:50%;top:14%;width:2px;height:2px;opacity:0.6"></span>
+    <span class="particle" style="left:40%;top:80%;width:4px;height:4px;opacity:0.4"></span>
+    <div class="monogram">
+      <span class="zs">
+        <span class="zs__fill">ZS</span>
+        <span class="zs__shimmer">ZS</span>
+      </span>
+    </div>
+    <div class="label">Aura-triggered · Molecular genesis</div>
+  </div>
+  <p class="footnote">// Idle state shown. Phase 1 builds the form from drifting dusty-rose particles converging with gravity easing. Phase 2 scales it down to nav size. The 3D production version uses a Three.js GLB with PMREM reflections — this card shows the visual target for the assembled state.</p>
+</body>
+</html>

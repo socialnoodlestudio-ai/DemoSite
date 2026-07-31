@@ -1,0 +1,66 @@
+<!-- @dsCard group="Foundations" name="Motion tokens" subtitle="Cinematic easing + 5-phase hero timeline" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Motion — Package A</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-gold:#B8895E;--gold:#D4AF37;--text-hi:#EDE7E0;--text-mid:#A39C95;
+    --ease-cinematic:cubic-bezier(0.22,1,0.36,1);
+    --ease-gravity:cubic-bezier(0.34,0,0.4,1);
+    --ease-inkdrop:cubic-bezier(0.5,0,0.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 56px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;letter-spacing:-0.018em;margin-bottom:32px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;margin:48px 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .card{background:#131318;border:1px solid rgba(200,164,160,0.12);border-radius:6px;padding:22px 22px 20px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:var(--text-mid)}
+  .card__name{color:var(--text-hi);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px}
+  .card__val{color:var(--rose-gold);font-size:12px}
+  .timeline{margin-top:36px;border-left:1px solid rgba(200,164,160,0.25);padding-left:28px;position:relative}
+  .phase{padding:18px 0 18px;position:relative}
+  .phase::before{content:'';position:absolute;left:-34px;top:24px;width:11px;height:11px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 4px rgba(200,164,160,0.18)}
+  .phase__name{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:-0.01em;color:var(--text-hi);margin-bottom:4px}
+  .phase__time{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--rose-gold);margin-bottom:8px}
+  .phase__desc{font-size:14px;line-height:1.6;color:var(--text-mid);max-width:62ch}
+  .note{font-size:13px;color:var(--text-mid);line-height:1.7;max-width:62ch;margin-top:8px}
+  em{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 01 · Foundations · Motion</div>
+  <h1>Slow, cinematic, intentional.</h1>
+  <p class="note">No bouncy. No snappy. Every transition uses one of three easings — chosen for emotional register, not novelty.</p>
+
+  <h2>Easing tokens</h2>
+  <div class="grid">
+    <div class="card"><div class="card__name">Ease · Cinematic</div><div class="card__val">cubic-bezier(0.22, 1, 0.36, 1)</div><br>For section reveals, scroll-tied parallax, navigation transitions. Decelerates gently.</div>
+    <div class="card"><div class="card__name">Ease · Gravity</div><div class="card__val">cubic-bezier(0.34, 0, 0.4, 1)</div><br>For particle attraction in Phase 1 — molecular pull-in feel.</div>
+    <div class="card"><div class="card__name">Ease · Ink Drop</div><div class="card__val">cubic-bezier(0.5, 0, 0.2, 1)</div><br>For typography emergence in Phase 4 — ink hitting paper.</div>
+  </div>
+
+  <h2>Duration tokens</h2>
+  <div class="grid">
+    <div class="card"><div class="card__name">Dur · XS</div><div class="card__val">120ms</div><br>Micro-feedback. Cursor changes, focus-ring fade.</div>
+    <div class="card"><div class="card__name">Dur · S</div><div class="card__val">220ms</div><br>Hover responses. Button shimmer.</div>
+    <div class="card"><div class="card__name">Dur · M</div><div class="card__val">600ms</div><br>Section reveals. Scroll-into-view fades.</div>
+    <div class="card"><div class="card__name">Dur · L</div><div class="card__val">1200ms</div><br>Typography reveals. Wireframe line draws.</div>
+    <div class="card"><div class="card__name">Dur · XL</div><div class="card__val">2800ms</div><br>Phase 1 particle convergence. Heroic moments.</div>
+    <div class="card"><div class="card__name">Dur · Epic</div><div class="card__val">6000ms</div><br>Phase 5 material wave sweep. Once per visit.</div>
+  </div>
+
+  <h2>Hero animation timeline</h2>
+  <div class="timeline">
+    <div class="phase"><div class="phase__time">00:00 — 02:80</div><div class="phase__name">Phase 1 · Brand Genesis</div><div class="phase__desc">Page loads near-black. Dusty-rose particles drift in space. Connection lines begin forming. Particles swirl with gravity easing into the ZS monogram. Logo finishes sculpted from brushed metal.</div></div>
+    <div class="phase"><div class="phase__time">02:80 — 04:50</div><div class="phase__name">Phase 2 · Brand Takes Its Place</div><div class="phase__desc">Logo scales down with cinematic easing and floats to upper-left. Camera zooms out subtly. Nav fades in: Home · Services · Case Studies · About · Contact.</div></div>
+    <div class="phase"><div class="phase__time">04:50 — 08:50</div><div class="phase__name">Phase 3 · Digital Architecture</div><div class="phase__desc">Glowing wireframe blueprint draws itself. Lines stroke in sequentially. Containers, cards, service blocks, case study grid all appear as soft dusty-rose strokes.</div></div>
+    <div class="phase"><div class="phase__time">08:50 — 10:80</div><div class="phase__name">Phase 4 · Value Reveal</div><div class="phase__desc">Typography emerges: <em>BUILT TO GROW. DESIGNED TO CONVERT.</em> Letters appear in ink-drop easing — not slid, not faded — printed.</div></div>
+    <div class="phase"><div class="phase__time">10:80 — 18:00</div><div class="phase__name">Phase 5 · Engineering Process</div><div class="phase__desc">Blueprint stabilizes. Liquid metal wave sweeps across, transforming wireframes into real components. Typography fills placeholders. Imagery develops. Micro-interactions activate.</div></div>
+    <div class="phase"><div class="phase__time">18:00 +</div><div class="phase__name">Idle State</div><div class="phase__desc">Particles drift quietly. ZS monogram shimmer cycles every 20–30 seconds. Background geometry slowly breathes. Site is fully interactive.</div></div>
+  </div>
+</body>
+</html>

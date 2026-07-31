@@ -1,0 +1,49 @@
+<!-- @dsCard group="Components" name="Top navigation" subtitle="Post-Phase 2 docked logo + 5-item nav" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Nav — Package A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-gold:#B8895E;--text-hi:#EDE7E0;--text-mid:#A39C95;--text-low:#6A6560}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 56px;min-height:100vh}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:32px}
+  .nav-shell{background:rgba(10,10,12,0.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(200,164,160,0.10);padding:22px 36px;display:flex;align-items:center;justify-content:space-between;border-radius:6px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand__mark{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;background:linear-gradient(135deg,#E8C5B5,#C8A4A0 50%,#B8895E);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;letter-spacing:-0.04em}
+  .brand__word{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:0.08em;color:var(--text-hi)}
+  .menu{display:flex;align-items:center;gap:42px;list-style:none}
+  .menu a{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 220ms cubic-bezier(0.22,1,0.36,1)}
+  .menu a:hover{color:var(--text-hi)}
+  .menu a.is-active{color:var(--rose)}
+  .menu a.cta{padding:10px 22px;border:1px solid var(--rose);color:var(--rose);border-radius:2px;transition:all 220ms cubic-bezier(0.22,1,0.36,1)}
+  .menu a.cta:hover{background:var(--rose);color:var(--ink)}
+  .spec{margin-top:48px;display:grid;gap:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-low);line-height:1.8}
+  .spec b{color:var(--text-mid);font-weight:500}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 02 · Components · Top Nav</div>
+  <nav class="nav-shell" aria-label="Primary">
+    <div class="brand">
+      <span class="brand__mark">ZS</span>
+      <span class="brand__word">ZUNIGA STUDIO.</span>
+    </div>
+    <ul class="menu">
+      <li><a href="#" class="is-active">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Case Studies</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#" class="cta">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="spec">
+    <div>// <b>Reveals</b> on Phase 2 completion (~4.5s). Logo travels from hero centre to upper-left with cinematic easing — no snap.</div>
+    <div>// <b>Background</b> uses translucent ink + 14px backdrop blur so the wireframe behind remains faintly visible.</div>
+    <div>// <b>Active state</b> uses the rose accent. Default link state uses mid-text gray.</div>
+    <div>// <b>Contact</b> is the only outlined link — visual weight of a button without breaking nav rhythm.</div>
+  </div>
+</body>
+</html>

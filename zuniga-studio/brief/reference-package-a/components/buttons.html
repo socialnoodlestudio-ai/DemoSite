@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" name="Buttons" subtitle="Primary rose + ghost + journey-style CTA" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Buttons — Package A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0A0A0C;--rose:#C8A4A0;--rose-light:#E8C5B5;--rose-gold:#B8895E;--gold:#D4AF37;--text-hi:#EDE7E0;--text-mid:#A39C95;--text-low:#6A6560}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--text-hi);font-family:'Inter',sans-serif;padding:48px 56px;min-height:100vh}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;margin:36px 0 18px;color:var(--text-hi)}
+  .row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid rgba(237,231,224,0.06)}
+  .spec{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-low);margin-left:auto;line-height:1.6}
+
+  /* Primary — rose fill + rose-gold sweep on hover */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:2px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:all 220ms cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden}
+  .btn--primary{background:var(--rose);color:var(--ink)}
+  .btn--primary::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(232,197,181,0.6) 50%,transparent 70%);transform:translateX(-100%);transition:transform 600ms cubic-bezier(0.22,1,0.36,1)}
+  .btn--primary:hover::before{transform:translateX(100%)}
+  .btn--ghost{background:transparent;color:var(--rose);border-color:var(--rose)}
+  .btn--ghost:hover{background:var(--rose);color:var(--ink)}
+  .btn--journey{background:linear-gradient(135deg,#1C1D22 0%,#0A0A0C 100%);color:var(--text-hi);border-color:var(--rose-gold);padding:18px 32px;border-radius:3px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0.18em;text-transform:uppercase}
+  .btn--journey:hover{box-shadow:0 0 32px rgba(184,137,94,0.35);transform:translateY(-1px)}
+  .btn .arrow{transition:transform 220ms cubic-bezier(0.22,1,0.36,1)}
+  .btn:hover .arrow{transform:translateX(4px)}
+</style>
+</head>
+<body>
+  <div class="eyebrow">// 02 · Components · Buttons</div>
+  <h2>Primary</h2>
+  <div class="row">
+    <a href="#" class="btn btn--primary">Let's Build Your Site <span class="arrow">→</span></a>
+    <a href="#" class="btn btn--primary">Get a quote</a>
+    <div class="spec">// rose fill · ink type<br>// hover · rose-gold sweep 600ms</div>
+  </div>
+
+  <h2>Ghost</h2>
+  <div class="row">
+    <a href="#" class="btn btn--ghost">View case studies</a>
+    <a href="#" class="btn btn--ghost">See pricing</a>
+    <div class="spec">// 1px rose stroke · transparent fill<br>// hover · fills rose, ink type</div>
+  </div>
+
+  <h2>Journey CTA</h2>
+  <div class="row">
+    <a href="#" class="btn btn--journey">Begin Journey</a>
+    <a href="#" class="btn btn--journey">Enter Studio</a>
+    <div class="spec">// reserved for Phase 1 entry only<br>// italic serif · rose-gold stroke · soft glow on hover</div>
+  </div>
+</body>
+</html>
