@@ -1,0 +1,79 @@
+<svg class="wf" viewBox="0 0 760 600" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blueprint wireframe of the demo homepage drawing itself">
+
+  <!-- ====== construction scaffold (faint, extends past panel edges) ====== -->
+  <g class="wf-cons">
+    <line class="wf-draw wf-faint" style="--i:1" x1="0"   y1="100" x2="760" y2="100" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:1" x1="124" y1="0"   x2="124" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:2" x1="636" y1="8"   x2="636" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:2" x1="24"  y1="264" x2="760" y2="264" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:3" x1="0"   y1="560" x2="744" y2="560" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:3" x1="380" y1="566" x2="380" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <!-- drafting cross ticks -->
+    <line class="wf-draw wf-faint" style="--i:4" x1="702" y1="318" x2="722" y2="318" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="712" y1="308" x2="712" y2="328" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="34"  y1="476" x2="54"  y2="476" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="44"  y1="466" x2="44"  y2="486" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+  </g>
+
+  <!-- ====== glowing panel ====== -->
+  <g class="wf-glow">
+
+    <!-- panel shell + header -->
+    <rect class="wf-draw" style="--i:5" x="60" y="40" width="640" height="520" rx="12" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+    <line class="wf-draw" style="--i:6" x1="60" y1="100" x2="700" y2="100" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text wf-text-bright" style="--i:6" x="88" y="77" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="3" fill="#f7c7b0">ZUNIGA STUDIO.</text>
+    <rect class="wf-draw" style="--i:7" x="648" y="54" width="36" height="36" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text wf-text-serif" style="--i:7" x="666" y="77" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="15" letter-spacing="1" fill="#f7c7b0">ZS</text>
+
+    <!-- inner content frame -->
+    <rect class="wf-draw" style="--i:8" x="100" y="120" width="560" height="418" rx="4" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+
+    <!-- hero focus placeholder -->
+    <rect class="wf-draw" style="--i:9"  x="124" y="144" width="512" height="120" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:10" x1="124" y1="144" x2="636" y2="264" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:10" x1="636" y1="144" x2="124" y2="264" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text wf-text-bright" style="--i:11" x="380" y="197" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="4" fill="#f7c7b0">HERO FOCUS</text>
+    <text class="wf-text wf-text-dim" style="--i:12" x="380" y="219" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" letter-spacing="1.5" fill="#b8756a">(placeholder asset)</text>
+
+    <!-- our services -->
+    <line class="wf-draw" style="--i:13" x1="124" y1="292" x2="292" y2="292" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:13" x1="468" y1="292" x2="636" y2="292" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text" style="--i:14" x="380" y="297" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="3.5" fill="#e9a28e">OUR SERVICES</text>
+
+    <rect class="wf-draw" style="--i:15" x="124" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <rect class="wf-draw" style="--i:16" x="300" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <rect class="wf-draw" style="--i:17" x="476" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text" style="--i:16" x="204" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">DESIGN</text>
+    <text class="wf-text" style="--i:17" x="380" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">MOTION</text>
+    <text class="wf-text" style="--i:18" x="556" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">STRATEGY</text>
+    <line class="wf-draw" style="--i:18" x1="176" y1="374" x2="232" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:18" x1="184" y1="383" x2="224" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:19" x1="352" y1="374" x2="408" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:19" x1="360" y1="383" x2="400" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:20" x1="528" y1="374" x2="584" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:20" x1="536" y1="383" x2="576" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+
+    <!-- case studies -->
+    <line class="wf-draw" style="--i:21" x1="124" y1="440" x2="288" y2="440" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:21" x1="472" y1="440" x2="636" y2="440" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text" style="--i:22" x="380" y="445" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="3.5" fill="#e9a28e">CASE STUDIES</text>
+
+    <rect class="wf-draw" style="--i:23" x="148" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:24" x1="148" y1="462" x2="292" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:24" x1="292" y1="462" x2="148" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <rect class="wf-draw" style="--i:25" x="308" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:26" x1="308" y1="462" x2="452" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:26" x1="452" y1="462" x2="308" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <rect class="wf-draw" style="--i:27" x="468" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:28" x1="468" y1="462" x2="612" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:28" x1="612" y1="462" x2="468" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+
+    <polyline class="wf-draw" style="--i:29" points="136,482 128,490 136,498" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+    <polyline class="wf-draw" style="--i:29" points="624,482 632,490 624,498" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+
+    <!-- carousel dots (middle one gold — the single luxury punctuation) -->
+    <circle class="wf-draw" style="--i:30" cx="364" cy="528" r="3"   stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <circle class="wf-draw wf-gold" style="--i:30" cx="380" cy="528" r="3.2" stroke="#d69e48" stroke-width="1.2" pathLength="1"/>
+    <circle class="wf-draw" style="--i:30" cx="396" cy="528" r="3"   stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+  </g>
+</svg>

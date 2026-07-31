@@ -43,6 +43,9 @@ html, body { margin: 0; padding: 0; }
 
 body {
   min-height: 100dvh;
+  /* The wave band sweeps past the stage edges by design; it must
+     never mint a horizontal scrollbar doing it. */
+  overflow-x: hidden;
   background: var(--black);
   color: var(--ink);
   font-family: var(--body);

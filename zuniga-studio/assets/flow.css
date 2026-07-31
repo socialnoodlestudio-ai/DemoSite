@@ -1,0 +1,341 @@
+/* ============================================================
+   Zuniga Studio — DOM choreography for the K1→K6 film.
+
+   genesis.js emits phase classes on <html> as the canvas story
+   advances:  .on-resolved → .on-dissolve → .on-blueprint →
+   .on-wave → .on-end.  Everything here keys off those. Classes
+   accumulate, so "leave" rules simply come later in the file and
+   override the "arrive" rules.
+
+   html.js gates all hiding: with scripts off, no class is ever
+   added and the page renders as a complete static composition.
+   html.flow-instant (skip / repeat visit / reduced motion) zeroes
+   every duration so the final state lands in one paint.
+   ============================================================ */
+
+/* ---------- Layers ---------- */
+.film {
+  position: relative;
+  z-index: 2; /* above the canvas (z:1), below nav (z:50) */
+  /* The film is staged inside ONE viewport — the blueprint draw and
+     the wave reveal must happen in view, not below a locked fold.
+     Fixed height + shrinking children, not min-height. */
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(72px, 10vh, 120px) clamp(20px, 5vw, 84px) clamp(24px, 4vh, 48px);
+}
+
+/* ---------- Shared beat mechanics ---------- */
+html.js .beat {
+  opacity: 0;
+  transition:
+    opacity 900ms cubic-bezier(0.23, 1, 0.32, 1),
+    filter 900ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* "The typography should not slide. It should simply emerge —
+   almost like ink appearing on paper."  Blur-to-sharp, no travel.
+   Selector kept at (0,2,1) — same weight as the html.on-* reveal
+   rules below, so source order decides and the reveals win. One
+   class more here and every reveal keeps the blur forever. */
+html.js .inkable { filter: blur(9px); }
+
+/* ---------- Nav ----------
+   The brief: navigation fades into existence once the mark has
+   resolved (Phase 2 — "the brand becoming established"). */
+html.js .nav {
+  opacity: 0;
+  transition: opacity 1100ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+html.on-resolved .nav { opacity: 1; }
+
+/* ---------- K2 caption ---------- */
+.cap-genesis {
+  position: absolute;
+  left: 50%;
+  top: 68vh;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: clamp(10px, 1.1vw, 12px);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(244, 233, 227, 0.55);
+}
+.cap-genesis span { margin: 0 14px; color: var(--rose); }
+
+html.on-resolved .cap-genesis { opacity: 1; filter: blur(0); }
+html.on-dissolve .cap-genesis { opacity: 0; filter: blur(7px); }
+
+/* ---------- K3: DIGITAL STORIES / IN MOTION ----------
+   Split placement straight from her frame: STORIES upper-left,
+   MOTION lower-right, the dissolving mark between them. */
+.head-stories { position: absolute; inset: 0; pointer-events: none; }
+.head-stories span {
+  position: absolute;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 6.4vw, 5.4rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--rose-light);
+  opacity: 0;
+  filter: blur(9px);
+  transition:
+    opacity 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+    filter 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.head-stories .hs-a { top: 16vh; left: clamp(16px, 5vw, 84px); }
+.head-stories .hs-b { bottom: 20vh; right: clamp(16px, 5vw, 84px); text-align: right; }
+
+html.on-dissolve .head-stories .hs-a { opacity: 1; filter: blur(0); transition-delay: 550ms; }
+html.on-dissolve .head-stories .hs-b { opacity: 1; filter: blur(0); transition-delay: 1150ms; }
+/* Exit for the wave — the promise takes over the frame */
+html.on-wave .head-stories .hs-a,
+html.on-wave .head-stories .hs-b { opacity: 0; filter: blur(7px); transition-delay: 0ms; }
+
+/* ---------- K3 ghost wireframes ----------
+   The faint page-sketches that appear behind the dissolve at the
+   frame's edges. Pure CSS boxes — they are atmosphere, not the
+   blueprint (that one draws itself in K5). */
+.ghosts { position: absolute; inset: 0; pointer-events: none; }
+.ghost {
+  position: absolute;
+  width: clamp(130px, 16vw, 230px);
+  opacity: 0;
+  transition: opacity 1400ms ease;
+}
+.ghost i {
+  display: block;
+  border: 1px solid rgba(233, 162, 142, 0.32);
+  border-radius: 1px;
+  margin-bottom: 10px;
+}
+.ghost i:nth-child(1) { height: 34px; }
+.ghost i:nth-child(2) { height: 84px; background: rgba(233, 162, 142, 0.04); }
+.ghost i:nth-child(3) { height: 20px; width: 70%; }
+.ghost i:nth-child(4) { height: 56px; }
+.g-l { left: clamp(8px, 3vw, 48px); top: 26vh; }
+.g-r { right: clamp(8px, 3vw, 48px); bottom: 18vh; }
+
+html.on-dissolve .ghost { opacity: 0.5; }
+html.on-blueprint .ghost { opacity: 0.22; }
+html.on-wave .ghost { opacity: 0; }
+
+/* ---------- K4 caption ---------- */
+.cap-lux {
+  position: absolute;
+  left: 50%;
+  bottom: 9vh;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: clamp(10px, 1.1vw, 12px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(244, 233, 227, 0.55);
+}
+.cap-lux span { margin: 0 12px; color: var(--gold); }
+
+html.on-blueprint .cap-lux { opacity: 1; filter: blur(0); transition-delay: 900ms; }
+html.on-wave .cap-lux { opacity: 0; filter: blur(7px); transition-delay: 0ms; }
+
+/* ---------- Final composition (K5→K6) ---------- */
+.final {
+  flex: 1;
+  min-height: 0; /* lets the stage shrink instead of overflowing */
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2.2vh, 24px);
+}
+
+.head-btg {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 6.2vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+html.on-wave .head-btg { opacity: 1; filter: blur(0); transition-delay: 500ms; }
+
+.kicker-btg {
+  margin: 0;
+  font-size: clamp(10px, 1.1vw, 12.5px);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 233, 227, 0.5);
+}
+html.on-wave .kicker-btg { opacity: 1; transition-delay: 1000ms; }
+
+/* The stage the wireframe and demo panel share. They occupy the
+   same grid cell so the demo literally takes the wireframe's place
+   under the sweep. */
+.stagewrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  margin-top: clamp(6px, 1.4vh, 16px);
+  /* The demo panel's LAYOUT box can be taller than this cell; the
+     visual fit is a transform (below), but layout overflow must not
+     extend the document or collide with the CTA row. */
+  overflow: hidden;
+}
+.stagewrap > * { grid-area: 1 / 1; }
+
+/* Fit the demo panel to the stage by measured transform — flow.js
+   sets --dpfit from the real panel/stage geometry after layout and
+   on resize. Width stays natural so text wraps like a real site.
+
+   Absolutely centered rather than grid-aligned: an item taller than
+   its cell falls into overflow-alignment territory, where browsers
+   disagree; translate(-50%,-50%) does not. Absolute also keeps the
+   oversized layout box from extending the document. */
+.stagewrap .dp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(920px, 92vw);
+  margin: 0;
+  transform: translate(-50%, -50%) scale(var(--dpfit, 1));
+  transform-origin: center center;
+}
+
+/* Wireframe container: hidden until it draws (wireframe.css owns
+   the stroke choreography; this only gates the layer). */
+html.js .wireframe { opacity: 0; transition: opacity 800ms ease; }
+html.on-blueprint .wireframe { opacity: 1; }
+/* The wireframe lingers under the arriving panel — the wave should
+   CONVERT one into the other, never leave an empty box between. */
+html.on-wave .wireframe { opacity: 0; transition-delay: 1500ms; transition-duration: 1700ms; }
+
+/* Integration override (beats demo-panel.css on specificity): panel
+   content starts landing while the sweep is still crossing. */
+html.on-wave .stagewrap .dp-in {
+  transition-delay: calc(780ms + var(--i) * 150ms);
+}
+.wireframe {
+  justify-self: center;
+  align-self: center;
+  height: 100%;
+  max-height: 100%;
+  pointer-events: none;
+}
+.wireframe svg {
+  height: 100%;
+  width: auto;
+  max-width: 92vw;
+  display: block;
+}
+
+/* The metallic sweep — "imagine liquid brushed metal flowing over
+   the blueprint." One pass, left to right, then gone. */
+.wave-band {
+  position: absolute;
+  inset: -6% -12%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(100deg,
+    transparent 32%,
+    rgba(247, 199, 176, 0.22) 45%,
+    rgba(255, 240, 228, 0.6) 50%,
+    rgba(247, 199, 176, 0.22) 55%,
+    transparent 68%);
+  mix-blend-mode: screen;
+  transform: translateX(-120%) skewX(-10deg);
+}
+html.on-wave .wave-band {
+  animation: zs-sweep 2400ms cubic-bezier(0.77, 0, 0.175, 1) 300ms forwards;
+}
+@keyframes zs-sweep {
+  0%   { opacity: 0; transform: translateX(-120%) skewX(-10deg); }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(120%) skewX(-10deg); }
+}
+
+/* CTAs + honesty line arrive after the demo has revealed. */
+.film-ctas {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+html.on-wave .film-ctas { opacity: 1; transition-delay: 3400ms; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border: 0;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+  color: #170f0d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), filter 200ms ease;
+}
+.cta:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .cta:hover { filter: brightness(1.08); } }
+
+.cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 4px;
+  color: var(--ink-dim);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.cta-ghost:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .cta-ghost:hover { color: var(--rose-light); } }
+.cta-ghost .rule {
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--rose), transparent);
+}
+
+/* ---------- Skip / repeat / reduced: everything lands at once */
+html.flow-instant .beat,
+html.flow-instant .nav,
+html.flow-instant .head-stories span,
+html.flow-instant .ghost,
+html.flow-instant .wireframe,
+html.flow-instant .wave-band {
+  transition-duration: 0ms !important;
+  transition-delay: 0ms !important;
+  animation-duration: 0ms !important;
+  animation-delay: 0ms !important;
+}
+/* On the instant path the transient beats never show at all —
+   the visitor asked for the page, not a slideshow of the film. */
+html.flow-instant .cap-genesis,
+html.flow-instant .head-stories span,
+html.flow-instant .ghost,
+html.flow-instant .cap-lux,
+html.flow-instant .wave-band,
+html.flow-instant .wireframe { opacity: 0 !important; animation: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .beat,
+  html.js .nav,
+  .head-stories span {
+    transition-duration: 240ms;
+    filter: none;
+  }
+}

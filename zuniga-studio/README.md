@@ -33,13 +33,18 @@ Her reference frames are in `brief/images/`, named by phase.
 
 ## Current state
 
-| Phase | Status |
+| Beat | Status |
 |---|---|
-| 1 — Particle genesis | **Built.** `assets/genesis.js` — ~1900 canvas particles converge into the ZS and resolve to solid brushed metal. Skippable, once per session, reduced-motion aware. |
-| 2 — Dock to nav | Not started. The nav mark it flies to exists in `index.html`. |
-| 3 — Blueprint architecture | Not started. |
-| 4 — Value reveal | Not started. Blocked on the headline decision. |
-| 5 — Engineered build-out | Not started. The hard one. |
+| K1→K2 — Particle genesis | **Built.** Sphere-sprite particles (specular + rim light), star flares, bokeh depth-of-field, constellation web, silk filaments; converge into the ZS and resolve to brushed metal with caption. |
+| K2→K3 — Dissolve | **Built.** The mark un-builds radially (blown off, not rewound); "Digital stories / in motion." inks in split around it; ghost sketches at the edges. |
+| K3→K5 — Blueprint | **Built.** The wireframe panel draws itself stroke-by-stroke (44 elements, staggered `stroke-dashoffset`). |
+| K5→K6 — Wave | **Built.** Metallic band sweeps the stage; wireframe converts into the "Your Business" demo panel; content staggers in; stats count up. |
+| Final state | The film's last frame IS the hero: headline + demo panel + CTAs, particle field stays as ambient. Repeat visits skip straight here (still ambient). |
+| Phase 2 dock-to-nav | Not built — the canvas mark fades at dissolve rather than flying to the nav box. The nav target exists. |
+
+~17s end to end, skippable at any moment (click/scroll/key/button), once per
+session, reduced-motion gets the finished page instantly. Driver is currently a
+CLOCK; converting to scroll-driven is an open decision (`docs/FLOW.md`).
 
 The rest of the site (work, studio, contact) does not exist yet in this build.
 
@@ -61,7 +66,7 @@ zuniga-studio/
 │   ├── brand-references/   ← moodboards, palette sheet
 │   └── reference-package-a/← design tokens derived from the brief
 ├── docs/
-│   ├── OPEN-DECISIONS.md   ← what Clarisa still has to answer
+│   ├── FLOW.md             ← THE SPEC: six keyframes, one motion, five tweens
 │   ├── BLUEPRINT.md        ← positioning + voice convention (still true)
 │   └── LESSONS.md          ← hard-won gotchas, append-only, read before debugging
 └── archive/                ← superseded docs from the abandoned builds
@@ -92,5 +97,7 @@ The overture plays once per browser session. To see it again, clear
 - **No domain decision.** `og:url` and `og:image` are deliberately omitted rather
   than pointed at the legacy GitHub Pages path. The previous build had them
   hardcoded and wrong.
-- **Headline copy is placeholder** pending `docs/OPEN-DECISIONS.md`.
+- **The keyframe sequence is settled** — see `docs/FLOW.md`. The frames are one
+  continuous motion ending on the demo site; the copy advances with it. The one
+  mechanical question left is clock-driven vs scroll-driven.
 - **Demo-client photography** in Phase 5 needs licensing.

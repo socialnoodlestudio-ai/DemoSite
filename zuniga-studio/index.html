@@ -9,10 +9,7 @@
 <meta name="theme-color" content="#050506" />
 
 <!-- NOTE: og:url / og:image are deliberately absent until the domain decision
-     lands. The previous build hardcoded them to the legacy GitHub Pages path,
-     which would have been wrong the moment a real Zuniga domain existed.
-     Wrong tags are worse than missing ones — they are what renders when
-     someone pastes the link into a text message. -->
+     lands. Wrong tags are worse than missing ones. -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,33 +17,38 @@
 
 <link rel="stylesheet" href="assets/base.css" />
 <link rel="stylesheet" href="assets/genesis.css" />
+<link rel="stylesheet" href="assets/flow.css" />
+<link rel="stylesheet" href="assets/wireframe.css" />
+<link rel="stylesheet" href="assets/demo-panel.css" />
+
+<!-- flow.js first: its zsflow listener must exist before genesis.js can emit
+     (the skip / repeat-visit paths emit synchronously during load). -->
+<script src="assets/flow.js" defer></script>
 <script src="assets/genesis.js" defer></script>
 
-<!-- Genesis curtain. Set before first paint so nothing flashes behind the
-     overture. JS-only: with scripting off the class is never added and the
-     page renders normally. genesis.js always removes it. -->
+<!-- Pre-paint setup. `js` gates all film hiding — with scripts off the page
+     renders as a complete static composition. The curtain only locks scroll;
+     genesis.js removes it on every exit path. -->
 <script>
   (function () {
+    var html = document.documentElement;
+    html.classList.add('js');
     try {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       if (sessionStorage.getItem('zs.genesis.seen') === '1') return;
     } catch (e) { /* private mode — play it */ }
-    document.documentElement.classList.add('genesis-pending');
+    html.classList.add('genesis-pending');
   })();
 </script>
 </head>
 
 <body>
 
-<!-- ============== PHASE 01 — PARTICLE GENESIS ==============
-     Plays once per session, skippable at any point, removed entirely
-     under prefers-reduced-motion. -->
+<!-- The particle stage. Plays K1→K6, then stays as ambient atmosphere. -->
 <canvas class="genesis" id="genesis" aria-hidden="true"></canvas>
 <button class="genesis-skip" id="genesisSkip" type="button">Skip intro</button>
 
-<!-- ============== NAV — PHASE 02 TARGET ==============
-     The docked ZS is where the monogram comes to rest at the end of
-     Phase 2. It is static for now; wiring the flight is the next slice. -->
+<!-- Nav — fades in when the mark resolves (Phase 2 of the brief). -->
 <header class="nav">
   <a class="nav__brand" href="./">
     <span class="nav__mark" aria-hidden="true">ZS</span>
@@ -59,34 +61,292 @@
   </nav>
 </header>
 
-<main class="stage">
+<main>
+  <section class="film" aria-label="Zuniga Studio — built to grow, designed to convert">
 
-  <!-- ============== HERO ==============
-       The headline slot is intentionally unresolved. Clarisa has two
-       competing directions in her own reference frames — "Built to grow.
-       Designed to convert." (client-growth) versus "Digital stories in
-       motion." (studio-craft) — and they sell to different buyers. The
-       markup holds the slot; the copy lands when she picks.
-       See docs/OPEN-DECISIONS.md. -->
-  <section class="hero" id="hero">
-    <p class="hero__eyebrow">Florida · Founded by Clarisa Zuniga</p>
-
-    <h1 class="hero__headline" data-slot="headline-pending">
-      Built to grow.<br />Designed to convert.
-    </h1>
-
-    <p class="hero__sub">
-      Websites engineered to attract, convert, and scale your business.
+    <!-- K2 — caption under the resolved mark -->
+    <p class="beat inkable cap-genesis" aria-hidden="true">
+      Molecular genesis<span>·</span>Narrative assembled
     </p>
 
-    <div class="hero__note" role="note">
-      <strong>Rebuild in progress.</strong> Phase 1 of 5 is live — the particle
-      genesis. Phases 2–5 (logo dock, blueprint architecture, value reveal,
-      engineered build-out) are not built yet. Headline copy is placeholder
-      pending Clarisa's direction call.
+    <!-- K3 — the dissolve headline, split around the mark -->
+    <div class="head-stories" aria-hidden="true">
+      <span class="hs-a">Digital<br />stories</span>
+      <span class="hs-b">in<br />motion.</span>
     </div>
-  </section>
 
+    <!-- K3 — ghost page-sketches at the edges -->
+    <div class="ghosts" aria-hidden="true">
+      <div class="ghost g-l"><i></i><i></i><i></i><i></i></div>
+      <div class="ghost g-r"><i></i><i></i><i></i></div>
+    </div>
+
+    <!-- K4 — stage caption -->
+    <p class="beat inkable cap-lux" aria-hidden="true">
+      Zuniga Studio<span>·</span>Tech-luxury narrative focused
+    </p>
+
+    <!-- K5/K6 — the final composition the film resolves into -->
+    <div class="final">
+      <h1 class="beat inkable head-btg">Built to grow.<br />Designed to convert.</h1>
+      <p class="beat kicker-btg">Strategy. Design. Motion.</p>
+
+      <div class="stagewrap">
+        <!-- The blueprint that draws itself (K5) -->
+        <div class="wireframe" aria-hidden="true">
+          <svg class="wf" viewBox="0 0 760 600" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blueprint wireframe of the demo homepage drawing itself">
+
+  <!-- ====== construction scaffold (faint, extends past panel edges) ====== -->
+  <g class="wf-cons">
+    <line class="wf-draw wf-faint" style="--i:1" x1="0"   y1="100" x2="760" y2="100" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:1" x1="124" y1="0"   x2="124" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:2" x1="636" y1="8"   x2="636" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:2" x1="24"  y1="264" x2="760" y2="264" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:3" x1="0"   y1="560" x2="744" y2="560" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:3" x1="380" y1="566" x2="380" y2="600" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <!-- drafting cross ticks -->
+    <line class="wf-draw wf-faint" style="--i:4" x1="702" y1="318" x2="722" y2="318" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="712" y1="308" x2="712" y2="328" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="34"  y1="476" x2="54"  y2="476" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw wf-faint" style="--i:4" x1="44"  y1="466" x2="44"  y2="486" stroke="#b8756a" stroke-width="1" pathLength="1"/>
+  </g>
+
+  <!-- ====== glowing panel ====== -->
+  <g class="wf-glow">
+
+    <!-- panel shell + header -->
+    <rect class="wf-draw" style="--i:5" x="60" y="40" width="640" height="520" rx="12" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+    <line class="wf-draw" style="--i:6" x1="60" y1="100" x2="700" y2="100" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text wf-text-bright" style="--i:6" x="88" y="77" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="3" fill="#f7c7b0">ZUNIGA STUDIO.</text>
+    <rect class="wf-draw" style="--i:7" x="648" y="54" width="36" height="36" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text wf-text-serif" style="--i:7" x="666" y="77" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="15" letter-spacing="1" fill="#f7c7b0">ZS</text>
+
+    <!-- inner content frame -->
+    <rect class="wf-draw" style="--i:8" x="100" y="120" width="560" height="418" rx="4" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+
+    <!-- hero focus placeholder -->
+    <rect class="wf-draw" style="--i:9"  x="124" y="144" width="512" height="120" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:10" x1="124" y1="144" x2="636" y2="264" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:10" x1="636" y1="144" x2="124" y2="264" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text wf-text-bright" style="--i:11" x="380" y="197" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="4" fill="#f7c7b0">HERO FOCUS</text>
+    <text class="wf-text wf-text-dim" style="--i:12" x="380" y="219" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" letter-spacing="1.5" fill="#b8756a">(placeholder asset)</text>
+
+    <!-- our services -->
+    <line class="wf-draw" style="--i:13" x1="124" y1="292" x2="292" y2="292" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:13" x1="468" y1="292" x2="636" y2="292" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text" style="--i:14" x="380" y="297" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="3.5" fill="#e9a28e">OUR SERVICES</text>
+
+    <rect class="wf-draw" style="--i:15" x="124" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <rect class="wf-draw" style="--i:16" x="300" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <rect class="wf-draw" style="--i:17" x="476" y="316" width="160" height="96" rx="3" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <text class="wf-text" style="--i:16" x="204" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">DESIGN</text>
+    <text class="wf-text" style="--i:17" x="380" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">MOTION</text>
+    <text class="wf-text" style="--i:18" x="556" y="356" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#e9a28e">STRATEGY</text>
+    <line class="wf-draw" style="--i:18" x1="176" y1="374" x2="232" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:18" x1="184" y1="383" x2="224" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:19" x1="352" y1="374" x2="408" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:19" x1="360" y1="383" x2="400" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:20" x1="528" y1="374" x2="584" y2="374" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+    <line class="wf-draw" style="--i:20" x1="536" y1="383" x2="576" y2="383" stroke="#e9a28e" stroke-width="1.1" pathLength="1"/>
+
+    <!-- case studies -->
+    <line class="wf-draw" style="--i:21" x1="124" y1="440" x2="288" y2="440" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:21" x1="472" y1="440" x2="636" y2="440" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <text class="wf-text" style="--i:22" x="380" y="445" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12.5" letter-spacing="3.5" fill="#e9a28e">CASE STUDIES</text>
+
+    <rect class="wf-draw" style="--i:23" x="148" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:24" x1="148" y1="462" x2="292" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:24" x1="292" y1="462" x2="148" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <rect class="wf-draw" style="--i:25" x="308" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:26" x1="308" y1="462" x2="452" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:26" x1="452" y1="462" x2="308" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <rect class="wf-draw" style="--i:27" x="468" y="462" width="144" height="56" rx="2" stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <line class="wf-draw" style="--i:28" x1="468" y1="462" x2="612" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+    <line class="wf-draw" style="--i:28" x1="612" y1="462" x2="468" y2="518" stroke="#e9a28e" stroke-width="1" pathLength="1"/>
+
+    <polyline class="wf-draw" style="--i:29" points="136,482 128,490 136,498" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+    <polyline class="wf-draw" style="--i:29" points="624,482 632,490 624,498" stroke="#e9a28e" stroke-width="1.5" pathLength="1"/>
+
+    <!-- carousel dots (middle one gold — the single luxury punctuation) -->
+    <circle class="wf-draw" style="--i:30" cx="364" cy="528" r="3"   stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+    <circle class="wf-draw wf-gold" style="--i:30" cx="380" cy="528" r="3.2" stroke="#d69e48" stroke-width="1.2" pathLength="1"/>
+    <circle class="wf-draw" style="--i:30" cx="396" cy="528" r="3"   stroke="#e9a28e" stroke-width="1.2" pathLength="1"/>
+  </g>
+</svg>
+        </div>
+
+        <!-- The metallic sweep -->
+        <div class="wave-band" aria-hidden="true"></div>
+
+        <!-- The demo client site the blueprint becomes (K6) -->
+        <!-- K6 — finished demo-client panel ("Your Business").
+     Fragment only: inject inside the stage, pair with assets/demo-panel.css.
+     Reveal hooks: html.on-wave (wipe + stagger) / html.flow-instant (skip).
+     "Your Business" is a FICTIONAL demonstration brand — the framing rows
+     (dp-tag / dp-disclaimer) are load-bearing honesty and must ship with it. -->
+<div class="dp">
+
+  <div class="dp-tag dp-in" style="--i:0">
+    <span class="dp-tag-text">Demonstration &mdash; Sample Client</span>
+    <span class="dp-tag-rule" aria-hidden="true"></span>
+  </div>
+
+  <div class="dp-frame">
+    <div class="dp-panel">
+
+      <div class="dp-bar dp-in" style="--i:1">
+        <span class="dp-brand">
+          <svg class="dp-mark" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="14" height="14" stroke="currentColor" stroke-width="1"/>
+            <path d="M5 11l6-6m0 0H7.2M11 5v3.8" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dp-brand-name">Your Business</span>
+        </span>
+        <span class="dp-nav">
+          <span class="dp-nav-item">Home</span>
+          <span class="dp-nav-item">Services</span>
+          <span class="dp-nav-item">About Us</span>
+          <span class="dp-nav-item">Projects</span>
+          <span class="dp-nav-item">FAQ</span>
+          <span class="dp-pill">Get a Quote</span>
+        </span>
+      </div>
+
+      <div class="dp-hero">
+
+        <div class="dp-hero-copy dp-in" style="--i:2">
+          <p class="dp-eyebrow">More Leads. More Sales. More Growth.</p>
+          <h3 class="dp-h">Your Business<br>Web Design</h3>
+          <p class="dp-lede">You focus on your business.<br>We handle the design &amp; backend.</p>
+          <span class="dp-cta">Let&rsquo;s Build Your Site <span class="dp-cta-arrow">&#8594;</span></span>
+        </div>
+
+        <div class="dp-hero-media dp-in" style="--i:3">
+          <div class="dp-img">
+            <span class="dp-img-caption">Image &mdash; licence pending</span>
+          </div>
+          <p class="dp-tagline">Websites that work as hard as <span class="dp-tagline-you">you</span> do.</p>
+        </div>
+
+        <div class="dp-features dp-in" style="--i:4">
+          <div class="dp-feat">
+            <svg class="dp-feat-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M2.5 15.5c0-2.4 2-4 4.5-4s4.5 1.6 4.5 4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="13.5" cy="7.5" r="2" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M13.6 11.6c2.2.2 3.9 1.6 3.9 3.7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="dp-feat-body">
+              <span class="dp-feat-name">More Leads</span>
+              <span class="dp-feat-desc">Attract the right audience.</span>
+            </span>
+          </div>
+          <div class="dp-feat">
+            <svg class="dp-feat-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M2.5 13.5L8 8l3 3 6-6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 5H17v3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="dp-feat-body">
+              <span class="dp-feat-name">Higher Conversions</span>
+              <span class="dp-feat-desc">Turn visitors into customers.</span>
+            </span>
+          </div>
+          <div class="dp-feat">
+            <svg class="dp-feat-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M10 3v2.2M10 14.8V17M3 10h2.2M14.8 10H17M5.05 5.05L6.6 6.6M13.4 13.4l1.55 1.55M14.95 5.05L13.4 6.6M6.6 13.4l-1.55 1.55" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="dp-feat-body">
+              <span class="dp-feat-name">We Handle It All</span>
+              <span class="dp-feat-desc">Design, development &amp; ongoing support.</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dp-solution">
+
+        <div class="dp-solution-head dp-in" style="--i:5">
+          <p class="dp-eyebrow dp-eyebrow-dark">A Complete Solution</p>
+          <h3 class="dp-h dp-h-dark">We design. You grow.</h3>
+          <p class="dp-support">From stunning websites to seamless backend systems,<br>we build everything you need to scale online.</p>
+        </div>
+
+        <div class="dp-cols dp-in" style="--i:6">
+          <div class="dp-col">
+            <svg class="dp-col-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="14" height="9.5" rx="0.5" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M8 16.5h4M10 13.5v3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="dp-col-name">Custom Web Design</span>
+            <span class="dp-col-desc">Beautiful, responsive websites built to represent your brand and convert visitors.</span>
+          </div>
+          <div class="dp-col">
+            <svg class="dp-col-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M7 6.5L3.5 10 7 13.5M13 6.5L16.5 10 13 13.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 5.5l-2 9" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="dp-col-name">Development</span>
+            <span class="dp-col-desc">Clean, fast, and secure development with a focus on performance.</span>
+          </div>
+          <div class="dp-col">
+            <svg class="dp-col-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <ellipse cx="10" cy="5.5" rx="5.5" ry="2.2" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M4.5 5.5v9c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2v-9" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M4.5 10c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2" stroke="currentColor" stroke-width="1.1"/>
+            </svg>
+            <span class="dp-col-name">Backend &amp; Integrations</span>
+            <span class="dp-col-desc">We handle the technical side so everything runs smoothly behind the scenes.</span>
+          </div>
+          <div class="dp-col">
+            <svg class="dp-col-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 12v-2a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="3" y="11" width="3" height="4.5" rx="1" stroke="currentColor" stroke-width="1.1"/>
+              <rect x="14" y="11" width="3" height="4.5" rx="1" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M16 15.5v.8c0 1.1-1.2 1.7-3 1.7" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <span class="dp-col-name">Ongoing Support</span>
+            <span class="dp-col-desc">Updates, maintenance, and support so you can focus on what you do best.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dp-stats dp-in" style="--i:7">
+        <div class="dp-stat">
+          <b class="dp-num" data-count="100" data-suffix="+">0</b>
+          <span class="dp-stat-label">Websites Launched</span>
+        </div>
+        <div class="dp-stat">
+          <b class="dp-num" data-count="2.4" data-decimals="1" data-suffix="X">0</b>
+          <span class="dp-stat-label">Average Conversion Increase</span>
+        </div>
+        <div class="dp-stat">
+          <b class="dp-num" data-count="90" data-suffix="%+">0</b>
+          <span class="dp-stat-label">Client Retention Rate</span>
+        </div>
+        <div class="dp-stat">
+          <b class="dp-num" data-count="24" data-suffix="/7">0</b>
+          <span class="dp-stat-label">Support &amp; Maintenance</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="dp-disclaimer dp-in" style="--i:8">Sample build. &ldquo;Your Business&rdquo; is a demonstration brand; figures shown are illustrative, not Zuniga Studio&rsquo;s results.</p>
+
+</div>
+      </div>
+
+      <div class="beat film-ctas">
+        <a class="cta" href="#contact">Start a project</a>
+        <a class="cta-ghost" href="#work">See the work <span class="rule"></span></a>
+      </div>
+    </div>
+
+  </section>
 </main>
 
 </body>
